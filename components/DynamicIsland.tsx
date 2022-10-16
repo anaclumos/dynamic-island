@@ -7,7 +7,9 @@ type DynamicIslandConfig = {
 const DynamicIsland = () => {
   return (
     <div>
-      <h1>Dynamic Island</h1>
+      <div className='flex flex-col items-center justify-center w-64 p-6 mx-auto my-6 text-center bg-black text-white rounded-full shadow-lg'>
+        hello
+      </div>
     </div>
   )
 }
