@@ -1,24 +1,24 @@
 export const DynamicIslandSizePresets = {
   default: {
-    width: 230,
-    heightRatio: 44 / 230,
+    width: 150,
+    heightRatio: 44 / 150,
     borderRadius: 22,
   },
   compactLeading: {
     width: 52.33,
-    heightRatio: 36.67 / 52.33,
-    borderRadius: 18.33,
+    heightRatio: 44 / 52.33,
+    borderRadius: 22,
   },
   compactTrailing: {
     width: 52.33,
-    heightRatio: 36.67 / 52.33,
-    borderRadius: 18.33,
+    heightRatio: 44 / 52.33,
+    borderRadius: 22,
   },
   // not sure about expanded width
   expanded: {
-    width: 282.33,
-    heightRatio: 36.67 / 282.33,
-    borderRadius: 18.33,
+    width: 350,
+    heightRatio: 44 / 350,
+    borderRadius: 22,
   },
   xlarge: {
     width: 371,
