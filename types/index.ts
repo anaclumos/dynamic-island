@@ -1,3 +1,3 @@
 export type DynamicIslandState = {
-  State: 'default' | 'separated' | 'expanded' | 'xlarge' | 'ultra'
+  current: 'default' | 'compactLeading' | 'compactTrailing' | 'expanded' | 'xlarge' | 'ultra'
 }
