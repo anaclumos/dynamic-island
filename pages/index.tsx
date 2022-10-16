@@ -9,8 +9,8 @@ const Index = () => {
   const [diState, setDiState] = useState<DynamicIslandState>({
     size: 'default' as DynamicIslandSize,
     imageUrl: imageUrl,
-    title: 'Title',
-    description: 'Description',
+    title: 'Sunghyun Cho',
+    description: 'mobile',
   })
   return (
     <>

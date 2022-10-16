@@ -41,7 +41,7 @@ const DynamicIsland = (props: DynamicIslandState) => {
         }}
         onClick={() => handleClick(state, setState)}
       >
-        <DynamicIslandPhoneCall {...props} />
+        <DynamicIslandPhoneCall {...(props as DynamicIslandState)} size={state} />
       </motion.button>
     </motion.div>
   )
