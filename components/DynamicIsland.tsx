@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { DynamicIslandState } from '../types'
 import { DynamicIslandSizePresets } from './DynamicIslandSizePresets'
+import { motion, Variants } from 'framer-motion'
 
 const initialState: keyof typeof DynamicIslandSizePresets = 'default'
 
@@ -24,22 +25,24 @@ const handleClick = (state: DynamicIslandState, setState: (state: DynamicIslandS
 const DynamicIsland = () => {
   const [state, setState] = useState<DynamicIslandState>({ current: 'default' })
   return (
-    <div
-      className='mx-auto my-6 w-full'
+    <motion.div
+      className='w-full mx-auto my-6'
       style={{ width: maxWidth, maxWidth: '100%', height: maxHeight, position: 'relative' }}
     >
-      <button
-        className='flex flex-col items-center justify-center mx-auto text-center bg-black text-white hover:shadow-lg transition-shadow duration-300 ease-in-out'
-        style={{
+      <motion.button
+        className='flex flex-col items-center justify-center mx-auto text-center text-white transition-shadow duration-300 ease-in-out bg-black hover:shadow-lg'
+        whileTap={{ scale: 0.97 }}
+        animate={{
           width: (DynamicIslandSizePresets[state.current ?? initialState].width / maxWidth) * 100 + '%',
           height: (DynamicIslandSizePresets[state.current ?? initialState].height / maxHeight) * 100 + '%',
           borderRadius: DynamicIslandSizePresets[state.current ?? initialState].borderRadius,
+          transition: { type: 'spring', stiffness: 200, damping: 24 },
         }}
         onClick={() => handleClick(state, setState)}
       >
         <span className='text-xs font-medium text-center text-white'>{state.current ?? initialState}</span>
-      </button>
-    </div>
+      </motion.button>
+    </motion.div>
   )
 }
 
