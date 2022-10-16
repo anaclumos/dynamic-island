@@ -17,7 +17,7 @@ const Header = () => {
           Open Source
         </a>
       </span>
-      <ul className='flex gap-6 py-2 mx-auto mt-3 text-sm text-center text-gray-500 lg:text-right dark:text-gray-400 sm:mx-0'>
+      <ul className='flex flex-row items-center justify-center mt-4 space-x-4 text-sm text-center text-gray-500 md:flex-row md:mt-0 md:space-y-0 md:space-x-6 dark:text-gray-400 md:text-left lg:text-left'>
         <li className='hover:underline'>
           <a
             href='https://developer.apple.com/design/human-interface-guidelines/components/system-experiences/live-activities'
