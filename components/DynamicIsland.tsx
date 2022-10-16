@@ -22,6 +22,8 @@ const handleClick = (state: DynamicIslandState, setState: (state: DynamicIslandS
   setState({ current: nextState })
 }
 
+const min = (a: number, b: number) => (a < b ? a : b)
+
 const DynamicIsland = () => {
   const [state, setState] = useState<DynamicIslandState>({ current: 'default' })
   return (
@@ -33,8 +35,10 @@ const DynamicIsland = () => {
         className='flex flex-col items-center justify-center mx-auto text-center text-white transition-shadow duration-300 ease-in-out bg-black hover:shadow-lg'
         whileTap={{ scale: 0.97 }}
         animate={{
-          width: (DynamicIslandSizePresets[state.current ?? initialState].width / maxWidth) * 100 + '%',
-          height: (DynamicIslandSizePresets[state.current ?? initialState].height / maxHeight) * 100 + '%',
+          width: min(DynamicIslandSizePresets[state.current ?? initialState].width, maxWidth),
+          height:
+            DynamicIslandSizePresets[state.current ?? initialState].heightRatio *
+            min(DynamicIslandSizePresets[state.current ?? initialState].width, maxWidth),
           borderRadius: DynamicIslandSizePresets[state.current ?? initialState].borderRadius,
           transition: { type: 'spring', stiffness: 200, damping: 24 },
         }}
