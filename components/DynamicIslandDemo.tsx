@@ -33,7 +33,11 @@ const DynamicIslandPhoneCall = ({ size }: { size: DynamicIslandSize }) => {
       <motion.div
         style={{ marginTop: '9%', textAlign: 'left', paddingLeft: '2%', width: '40%' }}
         initial={{ opacity: 0, scale: 0.6 }}
-        animate={{ opacity: size === 'default' ? 0 : 1, scale: size === 'default' ? 0.6 : 1 }}
+        animate={{
+          opacity: size === 'default' ? 0 : 1,
+          scale: size === 'default' ? 0.6 : 1,
+          filter: size === 'default' ? 'blur(10px)' : 'blur(0px)',
+        }}
         exit={{ opacity: size === 'default' ? 0 : 1, scale: size === 'default' ? 0.6 : 1 }}
       >
         <motion.p
@@ -79,7 +83,6 @@ const DynamicIslandPhoneCall = ({ size }: { size: DynamicIslandSize }) => {
           <Image src={phoneDownFill} alt={title} layout='fill' />
         </motion.div>
       </motion.div>
-
       <motion.div
         initial={{
           opacity: size === 'default' ? 0 : 1,
