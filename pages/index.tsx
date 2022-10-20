@@ -6,12 +6,14 @@ import { DynamicIslandSize, DynamicIslandState } from '../types'
 
 const Index = () => {
   const imageUrl = 'https://github.com/anaclumos.png'
-  const [diState, setDiState] = useState<DynamicIslandState>({
-    size: 'default' as DynamicIslandSize,
-    imageUrl: imageUrl,
-    title: 'Sunghyun Cho',
-    description: 'mobile',
-  })
+  const sequence: DynamicIslandSize[] = ['xlarge', 'default']
+  let sequenceIndex = 0
+
+  const handleClick = (state: DynamicIslandSize, setState: (state: DynamicIslandSize) => void) => {
+    const nextState = sequence[sequenceIndex++ % sequence.length]
+    setState(nextState)
+  }
+
   return (
     <>
       <div className='px-4'>
@@ -28,7 +30,9 @@ const Index = () => {
           elit.
         </p>
       </div>
-      <DynamicIsland {...diState} />
+      <div className='px-4 pt-12'>
+        <DynamicIsland changeSizeSequence={sequence} changeSizeOn='click' handleChange={handleClick} />
+      </div>
     </>
   )
 }

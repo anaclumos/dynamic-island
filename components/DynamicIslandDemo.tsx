@@ -8,97 +8,106 @@ const imageUrl = 'https://github.com/anaclumos.png'
 const title = 'Hello World!'
 
 const DynamicIslandPhoneCall = ({ size }: { size: DynamicIslandSize }) => {
-  if (size === 'default') {
-    return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 1 }}>
-        Default
+  return (
+    <motion.div style={{ position: 'relative', height: '100%', display: 'flex' }}>
+      <motion.div
+        initial={{ opacity: 0, filter: 'blur(10px)', scale: 0 }}
+        animate={{
+          opacity: size === 'default' ? 0 : 1,
+          filter: size === 'default' ? 'blur(10px)' : 'blur(0px)',
+          scale: size === 'default' ? 0 : 1,
+        }}
+        exit={{ opacity: 0, filter: 'blur(10px)', scale: 0 }}
+        style={{
+          position: 'relative',
+          height: '70%',
+          aspectRatio: 1,
+          margin: 'auto',
+          marginLeft: '5%',
+          borderRadius: '50%',
+          overflow: 'hidden',
+        }}
+      >
+        <Image src={imageUrl} alt={title} layout='fill' />
       </motion.div>
-    )
-  } else if (size === 'expanded') {
-    return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 1 }}>
-        Expanded
+      <motion.div
+        style={{ marginTop: '9%', textAlign: 'left', paddingLeft: '2%', width: '40%' }}
+        initial={{ opacity: 0, scale: 0.6 }}
+        animate={{ opacity: size === 'default' ? 0 : 1, scale: size === 'default' ? 0.6 : 1 }}
+        exit={{ opacity: size === 'default' ? 0 : 1, scale: size === 'default' ? 0.6 : 1 }}
+      >
+        <motion.p
+          style={{ color: 'gray', font: 'system-ui', marginBottom: 0, lineHeight: 0.6 }}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: size === 'default' ? 0 : 1, scale: size === 'default' ? 0.6 : 1 }}
+        >
+          mobile
+        </motion.p>
+        <motion.h2
+          style={{ color: 'white', font: 'system-ui', whiteSpace: 'nowrap', marginTop: 0, fontSize: '120%' }}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: size === 'default' ? 0 : 1, scale: size === 'default' ? 0.6 : 1 }}
+        >
+          Sunghyun Cho
+        </motion.h2>
       </motion.div>
-    )
-  } else if (size === 'xlarge') {
-    return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 1 }} className='flex '>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 1 }}
-          className='mt-1 ml-3 rounded-full'
-        >
-          <Image src={imageUrl} className='rounded-full' width={63} height={63} alt={title} />
-        </motion.div>
-        <motion.div
-          className='flex flex-col my-auto mt-4 ml-4'
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 1 }}
-        >
-          <motion.p
-            className='text-sm text-left text-gray-600 '
-            initial={{ size: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 1 }}
-          >
-            mobile
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 1 }}
-            className='mt-0 text-lg whitespace-nowrap'
-          >
-            Sunghyun Cho
-          </motion.h2>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 1 }}
-          className='my-auto bg-red-600 rounded-full ml-11'
-        >
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 1 }}
-            className='flex items-center justify-center mx-2 my-2 rounded-full'
-          >
-            <Image src={phoneDownFill} width={30} height={30} alt={title} />
-          </motion.div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 1 }}
-          className='my-auto ml-2 bg-green-600 rounded-full'
-        >
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 1 }}
-            className='flex items-center justify-center mx-2 my-2 rounded-full'
-          >
-            <Image src={phoneFill} width={30} height={30} alt={title} />
-          </motion.div>
+      <motion.div
+        initial={{
+          opacity: size === 'default' ? 0 : 1,
+          filter: size === 'default' ? 'blur(10px)' : 'blur(0px)',
+          scale: size === 'default' ? 0 : 1,
+        }}
+        animate={{
+          opacity: size === 'default' ? 0 : 1,
+          filter: size === 'default' ? 'blur(10px)' : 'blur(0px)',
+          scale: size === 'default' ? 0 : 1,
+        }}
+        exit={{
+          opacity: size === 'default' ? 0 : 1,
+          filter: size === 'default' ? 'blur(10px)' : 'blur(0px)',
+          scale: size === 'default' ? 0 : 1,
+        }}
+        style={{
+          height: '60%',
+          aspectRatio: 1,
+          margin: 'auto',
+          backgroundColor: 'red',
+          borderRadius: '50%',
+        }}
+      >
+        <motion.div style={{ position: 'relative', height: '60%', aspectRatio: 1, margin: '20%' }}>
+          <Image src={phoneDownFill} alt={title} layout='fill' />
         </motion.div>
       </motion.div>
-    )
-  } else if (size === 'ultra') {
-    return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 1 }}>
-        ultra
+
+      <motion.div
+        initial={{
+          opacity: size === 'default' ? 0 : 1,
+          filter: size === 'default' ? 'blur(10px)' : 'blur(0px)',
+          scale: size === 'default' ? 0 : 1,
+        }}
+        animate={{
+          opacity: size === 'default' ? 0 : 1,
+          filter: size === 'default' ? 'blur(10px)' : 'blur(0px)',
+          scale: size === 'default' ? 0 : 1,
+        }}
+        exit={{ filter: 'blur(10px)' }}
+        style={{
+          position: 'relative',
+          height: '60%',
+          aspectRatio: 1,
+          margin: 'auto',
+          marginRight: '4%',
+          backgroundColor: 'green',
+          borderRadius: '50%',
+        }}
+      >
+        <motion.div style={{ position: 'relative', height: '60%', aspectRatio: 1, margin: '20%' }}>
+          <Image src={phoneFill} layout='fill' alt={title} />
+        </motion.div>
       </motion.div>
-    )
-  } else {
-    return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 1 }}>
-        Small
-      </motion.div>
-    )
-  }
+    </motion.div>
+  )
 }
 
 export default DynamicIslandPhoneCall

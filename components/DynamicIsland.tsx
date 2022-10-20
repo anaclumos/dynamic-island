@@ -11,24 +11,16 @@ const initialState: keyof typeof DynamicIslandSizePresets = 'default'
 const maxWidth = 371
 const maxHeight = 160
 
-const sequence: DynamicIslandSize[] = ['expanded', 'default', 'xlarge', 'default', 'ultra']
-let sequenceIndex = 0
-
-const handleClick = (state: DynamicIslandSize, setState: (state: DynamicIslandSize) => void) => {
-  const nextState = sequence[sequenceIndex++ % sequence.length]
-  setState(nextState)
-}
-
 type Props = {
   changeSizeSequence: DynamicIslandSize[]
-  changeSizeOn: 'click ' | 'hover'
+  changeSizeOn: 'click' | 'hover'
+  handleChange: Function
 }
 
 const min = (a: number, b: number) => (a < b ? a : b)
 
 const DynamicIsland = (props: Props) => {
   const [state, setState] = useState<DynamicIslandSize>('default')
-
   return (
     <div className='grid place-items-center'>
       <motion.div>
@@ -40,9 +32,9 @@ const DynamicIsland = (props: Props) => {
               DynamicIslandSizePresets[state ?? initialState].heightRatio *
               min(DynamicIslandSizePresets[state ?? initialState].width, maxWidth),
             borderRadius: DynamicIslandSizePresets[state ?? initialState].borderRadius,
-            transition: { type: 'spring', stiffness: 240, damping: 30 },
+            transition: { type: 'spring', stiffness: 400, damping: 30 },
           }}
-          onClick={() => handleClick(state, setState)}
+          onClick={() => props.handleChange(state, setState)}
         >
           <AnimatePresence>
             <DynamicIslandDemo size={state} />
