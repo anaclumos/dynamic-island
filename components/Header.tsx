@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const Header = () => {
   return (
-    <nav className='py-4 mx-auto text-center md:flex md:items-center md:justify-between dark:bg-slate-800 md:text-left lg:text-left'>
+    <nav className='px-4 py-4 mx-auto text-center md:flex md:items-center md:justify-between dark:bg-slate-800 md:text-left lg:text-left'>
       <span className='mx-auto text-sm text-center text-gray-500 dark:text-gray-400 sm:mx-0'>
         <a href='https://cho.sh/' className='hover:underline' target='_blank' rel='noopener noreferrer'>
           Sunghyun Cho
