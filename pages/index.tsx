@@ -31,7 +31,7 @@ const Index = () => {
         </p>
       </div>
       <div className='pt-12'>
-        <DynamicIsland changeSizeSequence={sequence} changeSizeOn='click' handleChange={handleClick} />
+        <DynamicIsland changeSizeSequence={sequence} changeSizeOn='click' handleChange={handleClick} id='phone-call' />
       </div>
     </>
   )
