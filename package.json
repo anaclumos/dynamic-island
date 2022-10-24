@@ -1,7 +1,6 @@
 {
-  "name": "dynamic-island",
+  "name": "dynamic-island-js",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
