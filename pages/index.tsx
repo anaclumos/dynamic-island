@@ -2,18 +2,11 @@ import Head from 'next/head'
 import { useState } from 'react'
 import Header from '../components/Header'
 import DynamicIsland from '../components/DynamicIsland'
-import { DynamicIslandSize, DynamicIslandState } from '../types'
+import { DynamicIslandSize } from '../types'
+import { DynamicIslandPhoneCall } from '../components/DynamicIslandDemo'
 
 const Index = () => {
-  const imageUrl = 'https://github.com/anaclumos.png'
-  const sequence: DynamicIslandSize[] = ['xlarge', 'default']
-  let sequenceIndex = 0
-
-  const handleClick = (state: DynamicIslandSize, setState: (state: DynamicIslandSize) => void) => {
-    const nextState = sequence[sequenceIndex++ % sequence.length]
-    setState(nextState)
-  }
-
+  const [state, setState] = useState<DynamicIslandSize>('default')
   return (
     <>
       <div>
@@ -31,7 +24,16 @@ const Index = () => {
         </p>
       </div>
       <div className='pt-12'>
-        <DynamicIsland changeSizeSequence={sequence} changeSizeOn='click' handleChange={handleClick} id='phone-call' />
+        <DynamicIsland
+          id='phone-call'
+          default='default'
+          state={state}
+          setState={setState}
+          onHover={() => setState('xlarge')}
+          onLeave={() => setState('default')}
+        >
+          <DynamicIslandPhoneCall size={state} />
+        </DynamicIsland>
       </div>
     </>
   )

@@ -1,31 +1,32 @@
 // See https://developer.apple.com/design/human-interface-guidelines/components/system-experiences/live-activities
-
-import { useState } from 'react'
 import { DynamicIslandSize } from '../types'
 import { DynamicIslandSizePresets } from './DynamicIslandSizePresets'
 import { AnimatePresence, motion } from 'framer-motion'
-import DynamicIslandDemo from './DynamicIslandDemo'
 
 const initialState: keyof typeof DynamicIslandSizePresets = 'default'
 
 const maxWidth = 371
-const maxHeight = 160
 
 type Props = {
-  changeSizeSequence: DynamicIslandSize[]
-  changeSizeOn: 'click' | 'hover'
-  handleChange: Function
+  state: DynamicIslandSize
+  setState: (state: DynamicIslandSize) => void
+  default: DynamicIslandSize
+  onHover?: () => void
+  onLeave?: () => void
+  onClick?: () => void
+  children: React.ReactNode
   id?: string
 }
 
 const min = (a: number, b: number) => (a < b ? a : b)
 
 const DynamicIsland = (props: Props) => {
-  const [state, setState] = useState<DynamicIslandSize>('default')
+  let sequenceIndex = 0
+  const { state, children, id } = props
   return (
     <div className='grid place-items-center'>
       <motion.button
-        id={props.id}
+        id={id}
         className='items-center justify-center mx-auto text-center text-white transition duration-300 ease-in-out bg-black hover:shadow-lg'
         animate={{
           width: min(DynamicIslandSizePresets[state ?? initialState].width, maxWidth),
@@ -35,11 +36,11 @@ const DynamicIsland = (props: Props) => {
           borderRadius: DynamicIslandSizePresets[state ?? initialState].borderRadius,
           transition: { type: 'spring', stiffness: 400, damping: 30 },
         }}
-        onClick={() => props.handleChange(state, setState)}
+        onClick={props.onClick}
+        onHoverStart={props.onHover}
+        onHoverEnd={props.onLeave}
       >
-        <AnimatePresence>
-          <DynamicIslandDemo size={state} />
-        </AnimatePresence>
+        <AnimatePresence>{children}</AnimatePresence>
       </motion.button>
     </div>
   )
