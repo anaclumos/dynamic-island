@@ -24,7 +24,7 @@ const DynamicIsland = (props: Props) => {
   let sequenceIndex = 0
   const { state, children, id } = props
   return (
-    <div className='grid place-items-center'>
+    <div className='grid w-full h-full place-items-center'>
       <motion.button
         id={id}
         className='items-center justify-center mx-auto text-center text-white transition duration-300 ease-in-out bg-black hover:shadow-lg'
