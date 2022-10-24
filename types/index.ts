@@ -1,4 +1,11 @@
-export type DynamicIslandSize = 'compactLeading' | 'compactTrailing' | 'default' | 'expanded' | 'xlarge' | 'ultra'
+export type DynamicIslandSize =
+  | 'compactBothSides'
+  | 'compactLeading'
+  | 'compactTrailing'
+  | 'default'
+  | 'large'
+  | 'long'
+  | 'ultra'
 
 export type DynamicIslandState = {
   size: DynamicIslandSize

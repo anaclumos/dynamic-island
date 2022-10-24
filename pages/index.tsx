@@ -3,10 +3,11 @@ import { useState } from 'react'
 import Header from '../components/Header'
 import { DynamicIslandSize } from '../types'
 import DynamicIsland from '../src/DynamicIsland'
-import { DynamicIslandPhoneCall } from '../src/DynamicIslandDemo'
+import { DynamicIslandPhoneCall, DynamicIslandMusicPlayer } from '../src/DynamicIslandDemo'
 
 const Index = () => {
-  const [state, setState] = useState<DynamicIslandSize>('default')
+  const [callState, setCallState] = useState<DynamicIslandSize>('default')
+  const [musicPlayerState, setMusicPlayerState] = useState<DynamicIslandSize>('compactBothSides')
   return (
     <>
       <div>
@@ -27,12 +28,24 @@ const Index = () => {
         <DynamicIsland
           id='phone-call'
           default='default'
-          state={state}
-          setState={setState}
-          onHover={() => setState('xlarge')}
-          onLeave={() => setState('default')}
+          state={callState}
+          setState={setCallState}
+          onHover={() => setCallState('large')}
+          onLeave={() => setCallState('default')}
         >
-          <DynamicIslandPhoneCall size={state} />
+          <DynamicIslandPhoneCall size={callState} />
+        </DynamicIsland>
+      </div>
+      <div className='pt-12'>
+        <DynamicIsland
+          id='music-player'
+          default='compactBothSides'
+          state={musicPlayerState}
+          setState={setMusicPlayerState}
+          onHover={() => setMusicPlayerState('ultra')}
+          onLeave={() => setMusicPlayerState('compactBothSides')}
+        >
+          <DynamicIslandMusicPlayer size={musicPlayerState} />
         </DynamicIsland>
       </div>
     </>
