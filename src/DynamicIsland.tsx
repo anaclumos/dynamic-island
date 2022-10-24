@@ -21,7 +21,6 @@ type Props = {
 const min = (a: number, b: number) => (a < b ? a : b)
 
 const DynamicIsland = (props: Props) => {
-  let sequenceIndex = 0
   const { state, children, id } = props
   return (
     <div className='grid w-full h-full place-items-center'>

@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 const Header = () => {
   return (
     <nav className='px-4 py-4 mx-auto text-center md:flex md:items-center md:justify-between dark:bg-slate-800 md:text-left lg:text-left'>

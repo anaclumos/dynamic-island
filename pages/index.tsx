@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import Header from '../components/Header'
-import DynamicIsland from '../src/DynamicIsland'
 import { DynamicIslandSize } from '../types'
+import DynamicIsland from '../src/DynamicIsland'
 import { DynamicIslandPhoneCall } from '../src/DynamicIslandDemo'
 
 const Index = () => {
@@ -18,8 +18,9 @@ const Index = () => {
         <Header />
         <h1 className='px-4 py-1 my-6 text-3xl font-bold text-slate-900 dark:text-white'>Dynamic Island on the 🕸</h1>
         <p className='px-4 py-1 text-base font-medium text-slate-900 dark:text-white'>
-          Apple introduced Dynamic Island with iPhone 14 Pro. It is a new way of managing background activities, so I
-          wanted to recreate it in web technologies. You can also embed it inside your web today!
+          Lorem non dolor quis exercitation cupidatat incididunt ex id sint consectetur magna esse. Anim officia anim
+          ad. Fugiat velit consequat tempor dolore veniam labore. Officia reprehenderit amet eu in consequat amet eu
+          elit.
         </p>
       </div>
       <div className='pt-12'>
