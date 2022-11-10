@@ -37,7 +37,7 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
           <MotionDiv className='relative w-16 h-16 my-auto ml-6 overflow-hidden rounded-2xl' size={size} before='compactBothSides'>
             <Image src={`/api/imageProxy?imageUrl=${imageUrl}`} alt='A photo of a person listening to music' layout='fill' />
           </MotionDiv>
-          <MotionDiv className='my-auto ml-4 overflow-hidden text-left' size={size} before='compactBothSides'>
+          <MotionDiv className='my-auto ml-4 mr-6 overflow-hidden text-left' size={size} before='compactBothSides'>
             <MotionP className='mb-0 font-sans text-sm text-gray-500' size={size} before='compactBothSides'>
               Sunghyun&apos;s AirPods Pro
             </MotionP>

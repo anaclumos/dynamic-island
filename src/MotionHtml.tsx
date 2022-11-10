@@ -21,7 +21,7 @@ const MotionDiv = (props: Props) => {
       initial={{ opacity: 0, filter: 'blur(10px)', scale: 0 }}
       animate={{
         opacity: props.size === props.before ? 0 : 1,
-        filter: props.size === props.before ? 'blur(10px)' : 'blur(0px)',
+        filter: props.size === props.before ? 'blur(10px)' : 'none',
         scale: props.size === props.before ? 0.9 : 1,
         transition: { type: 'spring', stiffness: stiffness, damping: damping },
       }}
