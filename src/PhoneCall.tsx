@@ -1,5 +1,5 @@
-import phoneDownFill from '../public/phone_down_fill.svg'
-import phoneFill from '../public/phone_fill.svg'
+import PhoneDownFill from '../public/phone_down_fill.svg'
+import PhoneFill from '../public/phone_fill.svg'
 import { DynamicIslandSize } from '../types'
 import Image from 'next/image'
 import { MotionDiv, MotionH2, MotionP } from './MotionHtml'
@@ -19,13 +19,13 @@ export const DynamicIslandPhoneCall = ({ size }: { size: DynamicIslandSize }) =>
         </MotionH2>
       </MotionDiv>
       <MotionDiv size={size} before='default' className='relative m-auto ml-0 overflow-hidden bg-red-600 rounded-full h-3/5 aspect-square'>
-        <MotionDiv className='relative m-2.5 h-3/5 aspect-square' size={size} before='default'>
-          <Image src={phoneDownFill} alt='Decline Call' layout='fill' />
+        <MotionDiv className='grid m-2.5 h-3/5 aspect-square' size={size} before='default'>
+          <PhoneDownFill className='align-middle m-auto text-white scale-[2]' layout='fill' />
         </MotionDiv>
       </MotionDiv>
       <MotionDiv before='default' className='relative m-auto ml-0 overflow-hidden bg-green-600 rounded-full h-3/5 aspect-square' size={size}>
-        <MotionDiv className='relative m-2.5 h-3/5 aspect-square' size={size} before='default'>
-          <Image src={phoneFill} layout='fill' alt='Accept Call' />
+        <MotionDiv className='grid m-2.5 h-3/5 aspect-square' size={size} before='default'>
+          <PhoneFill className='m-auto text-white scale-[2]' layout='fill' />
         </MotionDiv>
       </MotionDiv>
     </MotionDiv>

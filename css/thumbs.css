@@ -1,0 +1,5 @@
+.slider::-webkit-slider-thumb,
+.slider::-moz-range-thumb,
+.slider::-ms-thumb {
+  opacity: 0;
+}
