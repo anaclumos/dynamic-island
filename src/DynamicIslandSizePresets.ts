@@ -34,7 +34,7 @@ export const DynamicIslandSizePresets = {
     width: 371,
     // the doc says 160, but it seems awkward.
     // overriding to 200 for now
-    heightRatio: 200 / 371,
+    heightRatio: 220 / 371,
     borderRadius: 42,
   },
 }

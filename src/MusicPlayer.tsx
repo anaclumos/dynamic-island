@@ -8,6 +8,7 @@ import AirPods from '../public/airpodspro.svg'
 import { NowPlaying } from './Now'
 import { useEffect, useState } from 'react'
 import { AppleMusicData, AppleMusicSong } from '../types/AppleMusicData'
+import MusicEqualizer from './MusicEqualizer'
 
 export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) => {
   const [song, setSong] = useState<AppleMusicSong[]>()
@@ -33,11 +34,11 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
   return (
     <MotionDiv className='h-full' size={size} before='compactBothSides'>
       <MotionDiv size={size} before='compactBothSides' className='w-full'>
-        <MotionDiv className='flex flex-row h-20 mt-3' size={size} before='compactBothSides'>
-          <MotionDiv className='relative w-16 h-16 my-auto ml-6 overflow-hidden rounded-2xl' size={size} before='compactBothSides'>
+        <MotionDiv className='grid grid-cols-5 my-6' size={size} before='compactBothSides'>
+          <MotionDiv className='relative w-16 h-16 col-span-1 my-auto ml-6 overflow-hidden rounded-2xl' size={size} before='compactBothSides'>
             <Image src={`/api/imageProxy?imageUrl=${imageUrl}`} alt='A photo of a person listening to music' layout='fill' />
           </MotionDiv>
-          <MotionDiv className='my-auto ml-4 mr-6 overflow-hidden text-left' size={size} before='compactBothSides'>
+          <MotionDiv className='col-span-3 my-auto ml-6 overflow-hidden text-left' size={size} before='compactBothSides'>
             <MotionP className='mb-0 font-sans text-sm text-gray-500' size={size} before='compactBothSides'>
               Sunghyun&apos;s AirPods Pro
             </MotionP>
@@ -48,6 +49,11 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
               {song?.[now].attributes.artistName}
             </MotionP>
           </MotionDiv>
+          <div className='flex flex-row justify-end'>
+            <div className='relative w-8 h-8 my-auto mr-6 overflow-hidden'>
+              <MusicEqualizer size={size} />
+            </div>
+          </div>
         </MotionDiv>
       </MotionDiv>
       <MotionDiv className='grid grid-cols-5 my-2' size={size} before='compactBothSides'>
