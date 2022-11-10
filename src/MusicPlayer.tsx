@@ -16,7 +16,7 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
     return Math.floor(Date.now() / 1000)
   }
 
-  const changeEveryNSeconds = 2
+  const changeEveryNSeconds = 10
   const now = Math.floor((getTimestampInSeconds() / changeEveryNSeconds) % (song?.length ?? 1))
 
   useEffect(() => {
