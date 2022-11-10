@@ -33,8 +33,8 @@ export const DynamicIslandSizePresets = {
   ultra: {
     width: 371,
     // the doc says 160, but it seems awkward.
-    // overriding to 240 for now
-    heightRatio: 240 / 371,
+    // overriding to 200 for now
+    heightRatio: 200 / 371,
     borderRadius: 42,
   },
 }
