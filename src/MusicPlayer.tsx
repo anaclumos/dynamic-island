@@ -83,7 +83,7 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
               </MotionP>
             </MotionDiv>
             <MotionDiv className='col-span-3 text-right' size={size} before='compactBothSides'>
-              <input type='range' className='w-full' disabled={true} />
+              <input type='range' className='w-full' disabled={true} style={{}} />
             </MotionDiv>
             <MotionDiv className='block text-left align-middle' size={size} before='compactBothSides'>
               <MotionP className='m-auto font-sans text-sm text-center text-gray-500 align-middle' size={size} before='compactBothSides'>

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 import { DynamicIslandSize } from '../types'
-import DynamicIsland from './DynamicIsland'
+import { useWillChange } from 'framer-motion'
 
 type Props = {
   id?: string
@@ -15,6 +15,7 @@ const stiffness = 400
 const damping = 30
 
 const MotionDiv = (props: Props) => {
+  const willChange = useWillChange()
   return (
     <motion.div
       id={props.id}
@@ -30,6 +31,7 @@ const MotionDiv = (props: Props) => {
         transition: { type: 'spring', stiffness: stiffness, damping: damping },
       }}
       exit={{ opacity: 0, filter: 'blur(10px)', scale: 0 }}
+      style={{ willChange }}
       className={props.className}
     >
       {props.children}
@@ -38,6 +40,7 @@ const MotionDiv = (props: Props) => {
 }
 
 const MotionH2 = (props: Props) => {
+  const willChange = useWillChange()
   return (
     <motion.h2
       className={props.className}
@@ -47,6 +50,7 @@ const MotionH2 = (props: Props) => {
         scale: props.size === props.before ? 0.9 : 1,
         transition: { type: 'spring', stiffness: stiffness, damping: damping },
       }}
+      style={{ willChange }}
     >
       {props.children}
     </motion.h2>
@@ -54,6 +58,7 @@ const MotionH2 = (props: Props) => {
 }
 
 const MotionP = (props: Props) => {
+  const willChange = useWillChange()
   return (
     <motion.p
       className={props.className}
@@ -63,6 +68,7 @@ const MotionP = (props: Props) => {
         scale: props.size === props.before ? 0.9 : 1,
         transition: { type: 'spring', stiffness: stiffness, damping: damping },
       }}
+      style={{ willChange }}
     >
       {props.children}
     </motion.p>
