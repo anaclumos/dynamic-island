@@ -2,6 +2,7 @@
 import { DynamicIslandSize } from '../types'
 import { DynamicIslandSizePresets } from './DynamicIslandSizePresets'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useWillChange } from 'framer-motion'
 
 const initialState: keyof typeof DynamicIslandSizePresets = 'default'
 
@@ -21,18 +22,20 @@ type Props = {
 const min = (a: number, b: number) => (a < b ? a : b)
 
 const DynamicIsland = (props: Props) => {
+  const willChange = useWillChange()
   const { state, children, id } = props
   return (
     <div className='grid w-full h-full place-items-center'>
       <motion.button
         id={id}
-        className='items-center justify-center mx-auto text-center text-white transition duration-300 ease-in-out bg-black hover:shadow-lg hover:scale-105'
+        className='items-center justify-center w-0 h-0 mx-auto text-center text-white transition duration-300 ease-in-out bg-black hover:shadow-lg hover:scale-105 squircle'
         animate={{
           width: min(DynamicIslandSizePresets[state ?? initialState].width, maxWidth),
-          height: DynamicIslandSizePresets[state ?? initialState].heightRatio * min(DynamicIslandSizePresets[state ?? initialState].width, maxWidth),
+          height: DynamicIslandSizePresets[state ?? initialState].aspectRatio * min(DynamicIslandSizePresets[state ?? initialState].width, maxWidth),
           borderRadius: DynamicIslandSizePresets[state ?? initialState].borderRadius,
           transition: { type: 'spring', stiffness: 400, damping: 40 },
         }}
+        style={{ willChange }}
         onClick={props.onClick}
         onHoverStart={props.onHover}
         onHoverEnd={props.onLeave}
