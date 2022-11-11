@@ -41,7 +41,7 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
   return (
     <>
       <div style={size === 'ultra' ? { display: 'none' } : { display: 'block' }} className='h-full'>
-        <MotionDiv className='grid justify-center h-full grid-cols-6 mx-3' size={size} before='ultra'>
+        <MotionDiv className='grid justify-center h-full grid-cols-6 mx-1' size={size} before='ultra'>
           <MotionDiv className='relative col-span-1 mx-auto my-auto overflow-hidden rounded-lg w-7 h-7' size={size} before='ultra'>
             <Image src={`/api/imageProxy?imageUrl=${imageUrl}`} alt='A photo of a person listening to music' layout='fill' />
           </MotionDiv>
@@ -82,8 +82,11 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
                 0:00
               </MotionP>
             </MotionDiv>
-            <MotionDiv className='col-span-3 text-right' size={size} before='compactBothSides'>
-              <input type='range' className='w-full' disabled={true} style={{}} />
+            <MotionDiv className='col-span-3 my-auto' size={size} before='compactBothSides'>
+              <div className='relative w-full h-2 my-auto mr-6 overflow-hidden bg-gray-500 rounded-full'>
+                <div className='absolute w-full h-2 my-auto mr-6 overflow-hidden bg-gray-500' />
+                <div className='absolute w-24 h-2 my-auto mr-6 overflow-hidden bg-white' />
+              </div>
             </MotionDiv>
             <MotionDiv className='block text-left align-middle' size={size} before='compactBothSides'>
               <MotionP className='m-auto font-sans text-sm text-center text-gray-500 align-middle' size={size} before='compactBothSides'>

@@ -31,7 +31,7 @@ const DynamicIsland = (props: Props) => {
           width: min(DynamicIslandSizePresets[state ?? initialState].width, maxWidth),
           height: DynamicIslandSizePresets[state ?? initialState].heightRatio * min(DynamicIslandSizePresets[state ?? initialState].width, maxWidth),
           borderRadius: DynamicIslandSizePresets[state ?? initialState].borderRadius,
-          transition: { type: 'spring', stiffness: 400, damping: 30 },
+          transition: { type: 'spring', stiffness: 400, damping: 40 },
         }}
         onClick={props.onClick}
         onHoverStart={props.onHover}

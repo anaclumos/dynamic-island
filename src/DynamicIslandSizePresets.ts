@@ -15,8 +15,8 @@ export const DynamicIslandSizePresets = {
     borderRadius: 22,
   },
   compactBothSides: {
-    width: 200,
-    heightRatio: 44 / 200,
+    width: 235,
+    heightRatio: 44 / 235,
     borderRadius: 22,
   },
   // not sure about long width
