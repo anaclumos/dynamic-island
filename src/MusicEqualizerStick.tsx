@@ -16,14 +16,25 @@ const getLoopingRandomInt = (max: number, length: number, base: number) => {
 
 type Props = {
   baseLength?: number // as a percentage of the height of the parent
+  colors: string[]
 }
 
-const MusicEqualizerStick = ({ baseLength }: Props) => {
+const MusicEqualizerStick = ({ baseLength, colors }: Props) => {
+  let first = `#${colors[0]}`
+  const r = parseInt(colors[0].substring(0, 2), 16) + 64
+  const g = parseInt(colors[0].substring(2, 4), 16) + 64
+  const b = parseInt(colors[0].substring(4, 6), 16) + 64
+  const rgb = `rgb(${r}, ${g}, ${b})`
+  first = rgb
+
   return (
     <motion.div
-      className='w-0.5 h-6 col-span-1 my-auto mx-auto bg-gray-500 rounded-full'
+      className={`w-[2.5px] h-6 col-span-1 my-auto mx-auto rounded-full`}
+      style={{
+        background: first,
+      }}
       animate={{
-        height: getLoopingRandomInt(32, 6, baseLength ?? 50),
+        height: getLoopingRandomInt(28, 6, baseLength ?? 50),
       }}
       transition={{
         duration: 1.1,
