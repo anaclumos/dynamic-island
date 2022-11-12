@@ -32,9 +32,14 @@ const DynamicIsland = (props: Props) => {
         animate={{
           width: min(DynamicIslandSizePresets[state ?? initialState].width, maxWidth),
           height: DynamicIslandSizePresets[state ?? initialState].aspectRatio * min(DynamicIslandSizePresets[state ?? initialState].width, maxWidth),
+          borderRadius: DynamicIslandSizePresets[state ?? initialState].borderRadius,
           transition: { type: 'spring', stiffness: 400, damping: 40 },
+          clipPath: `none`,
+          transitionEnd: {
+            clipPath: `url(#squircle-${state ?? initialState})`,
+          },
         }}
-        style={{ willChange, clipPath: `url(#squircle-${state ?? initialState})` }}
+        style={{ willChange }}
         onClick={props.onClick}
         onHoverStart={props.onHover}
         onHoverEnd={props.onLeave}
