@@ -41,7 +41,7 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
   return (
     <>
       <div style={size === 'ultra' ? { display: 'none' } : { display: 'block' }} className='h-full'>
-        <MotionDiv className='grid justify-center h-full grid-cols-6 mx-2' size={size} before='ultra'>
+        <MotionDiv className='grid justify-center h-full grid-cols-6 ml-1.5' size={size} before='ultra'>
           <MotionDiv className='relative col-span-1 mx-auto my-auto overflow-hidden rounded-lg w-7 h-7' size={size} before='ultra'>
             <Image src={`/api/imageProxy?imageUrl=${imageUrl}`} alt='A photo of a person listening to music' layout='fill' />
           </MotionDiv>
