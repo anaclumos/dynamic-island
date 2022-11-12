@@ -17,7 +17,7 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
     return Math.floor(Date.now() / 1000)
   }
 
-  const changeEveryNSeconds = 5
+  const changeEveryNSeconds = 10
   const now = Math.floor((getTimestampInSeconds() / changeEveryNSeconds) % (song?.length ?? 1))
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
   return (
     <>
       <div style={size === 'ultra' ? { display: 'none' } : { display: 'block' }} className='h-full'>
-        <MotionDiv className='grid justify-center h-full grid-cols-6 mx-1' size={size} before='ultra'>
+        <MotionDiv className='grid justify-center h-full grid-cols-6 mx-2' size={size} before='ultra'>
           <MotionDiv className='relative col-span-1 mx-auto my-auto overflow-hidden rounded-lg w-7 h-7' size={size} before='ultra'>
             <Image src={`/api/imageProxy?imageUrl=${imageUrl}`} alt='A photo of a person listening to music' layout='fill' />
           </MotionDiv>
@@ -59,13 +59,13 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
                 <Image src={`/api/imageProxy?imageUrl=${imageUrl}`} alt='A photo of a person listening to music' layout='fill' />
               </MotionDiv>
               <MotionDiv className='col-span-3 my-auto ml-6 overflow-hidden text-left' size={size} before='compactBothSides'>
-                <MotionP className='mb-0 font-sans text-sm text-gray-500' size={size} before='compactBothSides'>
+                <MotionP className='mb-0 font-sans text-sm text-gray-500 truncate' size={size} before='compactBothSides'>
                   Sunghyun&apos;s AirPods Pro
                 </MotionP>
                 <MotionH2 className='my-0 font-sans text-white truncate text-md whitespace-nowrap' size={size} before='compactBothSides'>
                   {song?.[now].attributes.name}
                 </MotionH2>
-                <MotionP className='mb-0 font-sans text-sm text-gray-500' size={size} before='compactBothSides'>
+                <MotionP className='mb-0 font-sans text-sm text-gray-500 truncate' size={size} before='compactBothSides'>
                   {song?.[now].attributes.artistName}
                 </MotionP>
               </MotionDiv>
