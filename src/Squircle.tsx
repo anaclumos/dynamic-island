@@ -1,18 +1,22 @@
 import React from 'react'
 import { DynamicIslandSize } from '../types'
 import { getSvgPath } from 'figma-squircle'
-
-const svgPath = getSvgPath({
-  width: 1,
-  height: 1,
-  cornerRadius: 0.3, // defaults to 0
-  cornerSmoothing: 0.8, // cornerSmoothing goes from 0 to 1
-})
+import { DynamicIslandSizePresets } from './DynamicIslandSizePresets'
 
 const Squircle = ({ size }: { size: DynamicIslandSize }) => {
+  const width = DynamicIslandSizePresets[size].width
+  const height = DynamicIslandSizePresets[size].aspectRatio * width
+  const cornerRadius = DynamicIslandSizePresets[size].borderRadius
+
+  const svgPath = getSvgPath({
+    width: width,
+    height: height,
+    cornerRadius: cornerRadius,
+    cornerSmoothing: 0.8,
+  })
   return (
-    <svg width={1} height={1} viewBox={`0 0 1 1`} fill='none' xmlns='http://www.w3.org/2000/svg'>
-      <clipPath id={`squircle-${size}`} clipPathUnits='objectBoundingBox'>
+    <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill='none' xmlns='http://www.w3.org/2000/svg'>
+      <clipPath id={`squircle-${size}`}>
         <path fill='red' stroke='none' d={svgPath} />
       </clipPath>
     </svg>
