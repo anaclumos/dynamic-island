@@ -2316,6 +2316,11 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
+figma-squircle@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/figma-squircle/-/figma-squircle-0.3.0.tgz#f9ad82ea6c3eb06b7a2e6b4ac01729dd4abbb76a"
+  integrity sha512-E75UbUSJyqJ+3Zzn68La0/tXvxtJDDmaivh5q+FC7+z4PoLHbzshMIbT8WtfvUafF4JAzbyT7RsOQbqmGxlMrA==
+
 file-entry-cache@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/file-entry-cache/-/file-entry-cache-6.0.1.tgz#211b2dd9659cb0394b073e7323ac3c933d522027"

@@ -10,6 +10,7 @@
   "dependencies": {
     "@blazity/next-image-proxy": "^1.0.2",
     "@svgr/webpack": "^6.5.1",
+    "figma-squircle": "^0.3.0",
     "framer": "^2.2.0",
     "framer-motion": "^7.5.3",
     "next": "12.3.1",

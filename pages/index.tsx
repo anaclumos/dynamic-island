@@ -5,6 +5,7 @@ import { DynamicIslandSize } from '../types'
 import DynamicIsland from '../src/DynamicIsland'
 import { DynamicIslandMusicPlayer } from '../src/MusicPlayer'
 import { DynamicIslandPhoneCall } from '../src/PhoneCall'
+import Squircle from '../src/Squircle'
 
 const Index = () => {
   const [callState, setCallState] = useState<DynamicIslandSize>('default')
@@ -47,6 +48,13 @@ const Index = () => {
           <DynamicIslandMusicPlayer size={musicPlayerState} />
         </DynamicIsland>
       </div>
+      <Squircle size='compactBothSides' />
+      <Squircle size='compactLeading' />
+      <Squircle size='compactTrailing' />
+      <Squircle size='default' />
+      <Squircle size='large' />
+      <Squircle size='long' />
+      <Squircle size='ultra' />
     </>
   )
 }
