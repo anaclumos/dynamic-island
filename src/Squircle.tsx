@@ -12,7 +12,7 @@ const Squircle = ({ size }: { size: DynamicIslandSize }) => {
     width: width,
     height: height,
     cornerRadius: cornerRadius,
-    cornerSmoothing: 0.8,
+    cornerSmoothing: 0.6,
   })
   return (
     <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill='none' xmlns='http://www.w3.org/2000/svg'>
