@@ -6,12 +6,7 @@ const Header = () => {
           Sunghyun Cho
         </a>
         {' ❤️ '}
-        <a
-          href='https://github.com/anaclumos/B1DFF3'
-          className='hover:underline'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
+        <a href='https://github.com/anaclumos/dynamic-island' className='hover:underline' target='_blank' rel='noopener noreferrer'>
           Open Source
         </a>
       </span>
@@ -31,8 +26,8 @@ const Header = () => {
           </a>
         </li>
         <li className='hover:underline'>
-          <a href='https://cho.sh' target='_blank' rel='noopener noreferrer'>
-            Technical Review
+          <a href='https://cho.sh/r/B21605' target='_blank' rel='noopener noreferrer'>
+            Technical Review (WIP 🚧)
           </a>
         </li>
       </ul>
