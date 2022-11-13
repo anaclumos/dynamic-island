@@ -46,7 +46,7 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
             <Image src={`/api/imageProxy?imageUrl=${imageUrl}`} alt='A photo of a person listening to music' layout='fill' />
           </MotionDiv>
           <MotionDiv className='col-span-4 mx-auto my-auto' size={size} before='ultra' />
-          <MotionDiv className='w-6 col-span-1 mx-auto my-auto' size={size} before='ultra'>
+          <MotionDiv className='w-6 col-span-1 mx-auto my-auto pr-0.5' size={size} before='ultra'>
             <MusicEqualizer size={size} colors={musicColors} before='ultra' />
           </MotionDiv>
         </MotionDiv>
