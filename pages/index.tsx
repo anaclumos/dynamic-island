@@ -26,7 +26,7 @@ const Index = () => {
           tempor dolore veniam labore. Officia reprehenderit amet eu in consequat amet eu elit.
         </p>
       </div>
-      <div className='pt-12 overflow-x-hidden overflow-y-visible'>
+      <div className='mt-12'>
         <DynamicIsland
           id='phone-call'
           default='default'
@@ -37,7 +37,7 @@ const Index = () => {
           <DynamicIslandPhoneCall size={callState} />
         </DynamicIsland>
       </div>
-      <div className='pt-12 overflow-x-hidden overflow-y-visible'>
+      <div className='pt-12'>
         <DynamicIsland
           id='music-player'
           default='compactBothSides'
