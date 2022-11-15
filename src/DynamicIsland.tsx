@@ -28,7 +28,7 @@ const DynamicIsland = (props: Props) => {
     <div className='grid w-full h-full place-items-center'>
       <motion.button
         id={id}
-        className='items-center justify-center w-0 h-0 mx-auto text-center text-white transition duration-300 ease-in-out bg-black active:shadow-lg active:scale-105'
+        className='items-center justify-center w-0 h-0 mx-auto text-center text-white transition duration-300 ease-in-out bg-black hover:shadow-lg'
         animate={{
           width: min(DynamicIslandSizePresets[state ?? initialState].width, maxWidth),
           height: DynamicIslandSizePresets[state ?? initialState].aspectRatio * min(DynamicIslandSizePresets[state ?? initialState].width, maxWidth),
