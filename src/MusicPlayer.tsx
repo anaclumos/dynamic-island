@@ -6,18 +6,21 @@ import Forward from '../public/forward.fill.svg'
 import Pause from '../public/pause.fill.svg'
 import AirPods from '../public/airpodspro.svg'
 import { NowPlaying } from './Now'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { AppleMusicData, AppleMusicSong } from '../types/AppleMusicData'
 import { MusicEqualizer } from './MusicEqualizer'
 
 export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) => {
   const [song, setSong] = useState<AppleMusicSong[]>()
+  const [placeholder, setPlaceholder] = useState(
+    `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='${'#eee'}'/%3E%3C/svg%3E`
+  )
 
   const getTimestampInSeconds = () => {
     return Math.floor(Date.now() / 1000)
   }
 
-  const changeEveryNSeconds = 10
+  const changeEveryNSeconds = 60
   const now = Math.floor((getTimestampInSeconds() / changeEveryNSeconds) % (song?.length ?? 1))
 
   useEffect(() => {
@@ -30,20 +33,42 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
   }, [])
 
   const imageUrl = song?.[now].attributes.artwork.url.replace('{w}', '500').replace('{h}', '500') ?? 'https://cataas.com/c'
-  const musicColors = [
-    song?.[now].attributes.artwork.bgColor ?? '#eee',
-    song?.[now].attributes.artwork.textColor1 ?? '#eee',
-    song?.[now].attributes.artwork.textColor2 ?? '#eee',
-    song?.[now].attributes.artwork.textColor3 ?? '#eee',
-    song?.[now].attributes.artwork.textColor4 ?? '#eee',
-  ]
+
+  let musicColors = useMemo(() => {
+    return [
+      song?.[now].attributes.artwork.bgColor ?? '#eee',
+      song?.[now].attributes.artwork.textColor1 ?? '#eee',
+      song?.[now].attributes.artwork.textColor2 ?? '#eee',
+      song?.[now].attributes.artwork.textColor3 ?? '#eee',
+      song?.[now].attributes.artwork.textColor4 ?? '#eee',
+    ]
+  }, [now, song])
+
+  const r = parseInt(musicColors[0].substring(0, 2), 16) + 64
+  const g = parseInt(musicColors[0].substring(2, 4), 16) + 64
+  const b = parseInt(musicColors[0].substring(4, 6), 16) + 64
+  const rgb = `rgb(${r}, ${g}, ${b})`
+
+  useEffect(() => {
+    setPlaceholder(
+      `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='${
+        musicColors[0] ?? '#eee'
+      }'/%3E%3C/svg%3E`
+    )
+  }, [musicColors])
 
   return (
     <>
       <div style={size === 'ultra' ? { display: 'none' } : { display: 'block' }} className='h-full'>
         <MotionDiv className='grid justify-center h-full grid-cols-6 ml-1.5' size={size} before='ultra'>
           <MotionDiv className='relative col-span-1 mx-auto my-auto overflow-hidden rounded-lg w-7 h-7' size={size} before='ultra'>
-            <Image src={`/api/imageProxy?imageUrl=${imageUrl}`} alt='A photo of a person listening to music' layout='fill' />
+            <Image
+              src={`/api/imageProxy?imageUrl=${imageUrl}`}
+              alt={`album art of song`}
+              layout='fill'
+              blurDataURL={placeholder}
+              placeholder='blur'
+            />
           </MotionDiv>
           <MotionDiv className='col-span-4 mx-auto my-auto' size={size} before='ultra' />
           <MotionDiv className='w-6 col-span-1 mx-auto my-auto pr-0.5' size={size} before='ultra'>
@@ -56,7 +81,13 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
           <MotionDiv size={size} before='compactBothSides' className='w-full'>
             <MotionDiv className='grid grid-cols-5 my-6' size={size} before='compactBothSides'>
               <MotionDiv className='relative w-16 h-16 col-span-1 my-auto ml-6 overflow-hidden rounded-2xl' size={size} before='compactBothSides'>
-                <Image src={`/api/imageProxy?imageUrl=${imageUrl}`} alt='A photo of a person listening to music' layout='fill' />
+                <Image
+                  src={`/api/imageProxy?imageUrl=${imageUrl}`}
+                  alt={`album art of song`}
+                  layout='fill'
+                  blurDataURL={placeholder}
+                  placeholder='blur'
+                />
               </MotionDiv>
               <MotionDiv className='col-span-3 my-auto ml-6 overflow-hidden text-left' size={size} before='compactBothSides'>
                 <MotionP className='mb-0 font-sans text-sm text-gray-500 truncate' size={size} before='compactBothSides'>
