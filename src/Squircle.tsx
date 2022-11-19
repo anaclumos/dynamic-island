@@ -21,7 +21,7 @@ const Squircle = ({ size }: { size: DynamicIslandSize }) => {
       viewBox={`0 0 ${width} ${height}`}
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
-      style={{ position: 'absolute', top: 0, left: 0 }}
+      style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none' }}
     >
       <clipPath id={`squircle-${size}`}>
         <path fill='red' stroke='none' d={svgPath} />
