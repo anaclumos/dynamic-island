@@ -10,7 +10,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         {/* eslint-disable @next/next/no-img-element */}
         <img src='https://sa.cho.sh/noscript.gif' alt='' referrerPolicy='no-referrer-when-downgrade' />
       </noscript>
-      <div className='py-8 mx-auto'>
+      <div className='mx-auto'>
         <div className='max-w-screen-xl mx-auto'>
           <Component {...pageProps} />
         </div>

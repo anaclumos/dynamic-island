@@ -13,7 +13,7 @@ const Index = () => {
 
   return (
     <>
-      <div className='w-full h-full overflow-hiddenring-1 ring-slate-900/5'>
+      <div className='w-full h-full py-8 overflow-hiddenring-1 ring-slate-900/5'>
         <Head>
           <title>Dynamic Island on the web</title>
           <meta name='description' content='Dynamic Island on the web' />
