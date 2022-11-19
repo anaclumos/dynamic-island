@@ -71,7 +71,7 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
             />
           </MotionDiv>
           <MotionDiv className='col-span-4 mx-auto my-auto' size={size} before='ultra' />
-          <MotionDiv className='w-6 col-span-1 mx-auto my-auto pr-0.5' size={size} before='ultra'>
+          <MotionDiv className='w-7.5 col-span-1 mx-auto my-auto pr-0.5' size={size} before='ultra'>
             <MusicEqualizer size={size} colors={musicColors} before='ultra' />
           </MotionDiv>
         </MotionDiv>
@@ -91,17 +91,17 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
               </MotionDiv>
               <MotionDiv className='col-span-3 my-auto ml-6 overflow-hidden text-left' size={size} before='compactBothSides'>
                 <MotionP className='mb-0 font-sans text-sm text-gray-500 truncate' size={size} before='compactBothSides'>
-                  Sunghyun&apos;s AirPods Pro
+                  Sunghyun was listening to&hellip;
                 </MotionP>
                 <MotionH2 className='my-0 font-sans text-white truncate text-md whitespace-nowrap' size={size} before='compactBothSides'>
                   {song?.[now].attributes.name}
                 </MotionH2>
                 <MotionP className='mb-0 font-sans text-sm text-gray-500 truncate' size={size} before='compactBothSides'>
-                  {song?.[now].attributes.artistName}
+                  by {song?.[now].attributes.artistName}
                 </MotionP>
               </MotionDiv>
               <div className='flex flex-row justify-end'>
-                <div className='relative w-8 h-8 my-auto mr-6 overflow-hidden'>
+                <div className='relative my-auto mr-6 overflow-hidden scale-125'>
                   <MusicEqualizer size={size} colors={musicColors} before='compactBothSides' />
                 </div>
               </div>

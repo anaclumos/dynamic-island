@@ -29,9 +29,10 @@ const MusicEqualizerStick = ({ baseLength, colors }: Props) => {
 
   return (
     <motion.div
-      className={`w-[2.5px] h-6 col-span-1 my-auto mx-auto rounded-full`}
+      className={`h-6 col-span-1 my-auto mx-auto rounded-full`}
       style={{
         background: first,
+        width: '2px',
       }}
       animate={{
         height: getLoopingRandomInt(28, 6, baseLength ?? 50),

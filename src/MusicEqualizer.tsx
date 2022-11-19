@@ -12,7 +12,7 @@ type Props = {
 
 export const MusicEqualizer = ({ size, colors, before }: Props) => {
   return (
-    <MotionDiv className='grid justify-center h-full grid-cols-6 gap-[0.5px]' size={size} before={before}>
+    <MotionDiv className='grid justify-center h-full grid-cols-6 gap-[1px] bg-transparent' size={size} before={before}>
       <MusicEqualizerStick baseLength={50} colors={colors} />
       <MusicEqualizerStick baseLength={60} colors={colors} />
       <MusicEqualizerStick baseLength={90} colors={colors} />
