@@ -25,7 +25,7 @@ const DynamicIsland = (props: Props) => {
   const willChange = useWillChange()
   const { state, children, id } = props
   return (
-    <div className='grid w-full h-full bg-transparent place-items-center'>
+    <div className='z-10 grid w-full h-full bg-transparent place-items-center'>
       <motion.button
         id={id}
         className='items-center justify-center w-0 h-0 mx-auto text-center text-white transition duration-300 ease-in-out bg-black hover:shadow-lg'
