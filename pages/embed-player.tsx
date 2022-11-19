@@ -2,6 +2,7 @@ import Script from 'next/script'
 import React, { useState } from 'react'
 import DynamicIsland from '../src/DynamicIsland'
 import { DynamicIslandMusicPlayer } from '../src/MusicPlayer'
+import Squircle from '../src/Squircle'
 import { DynamicIslandSize } from '../types'
 
 const Player = () => {
@@ -18,6 +19,8 @@ const Player = () => {
       >
         <DynamicIslandMusicPlayer size={musicPlayerState} />
       </DynamicIsland>
+      <Squircle size='compactBothSides' />
+      <Squircle size='ultra' />
     </div>
   )
 }
