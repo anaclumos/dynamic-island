@@ -19,8 +19,10 @@ const Player = () => {
       >
         <DynamicIslandMusicPlayer size={musicPlayerState} />
       </DynamicIsland>
-      <Squircle size='compactBothSides' />
-      <Squircle size='ultra' />
+      <div className='hidden'>
+        <Squircle size='compactBothSides' />
+        <Squircle size='ultra' />
+      </div>
     </div>
   )
 }
