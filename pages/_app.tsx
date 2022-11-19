@@ -11,7 +11,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <img src='https://sa.cho.sh/noscript.gif' alt='' referrerPolicy='no-referrer-when-downgrade' />
       </noscript>
       <div className='mx-auto'>
-        <div className='max-w-screen-xl mx-auto'>
+        <div className='max-w-screen-xl mx-auto h-fit'>
           <Component {...pageProps} />
         </div>
       </div>
