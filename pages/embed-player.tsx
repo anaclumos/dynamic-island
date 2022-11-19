@@ -7,7 +7,7 @@ import { DynamicIslandSize } from '../types'
 const Player = () => {
   const [musicPlayerState, setMusicPlayerState] = useState<DynamicIslandSize>('compactBothSides')
   return (
-    <div className='p-2'>
+    <div className='p-4'>
       <Script src='/static/iframe-resizer.js' />
       <DynamicIsland
         id='music-player'
