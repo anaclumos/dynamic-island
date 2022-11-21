@@ -16,12 +16,8 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
     `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='${'#eee'}'/%3E%3C/svg%3E`
   )
 
-  const getTimestampInSeconds = () => {
-    return Math.floor(Date.now() / 1000)
-  }
-
-  const changeEveryNSeconds = 60
-  const now = Math.floor((getTimestampInSeconds() / changeEveryNSeconds) % (song?.length ?? 1))
+  const [now, setNow] = useState<number>(0)
+  const currentSong = useMemo(() => song?.[now] ?? null, [song, now])
 
   useEffect(() => {
     const fetchSong = async () => {
@@ -32,22 +28,39 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
     fetchSong().catch(console.error)
   }, [])
 
-  const imageUrl = song?.[now].attributes.artwork.url.replace('{w}', '500').replace('{h}', '500') ?? 'https://cataas.com/c'
+  const imageUrl = currentSong?.attributes.artwork.url.replace('{w}', '500').replace('{h}', '500') ?? 'https://cataas.com/c'
+
+  const decrement = () => {
+    if (now === 0) {
+      setNow((song?.length ?? 1) - 1)
+    } else {
+      setNow(now - 1)
+    }
+  }
+
+  const increment = () => {
+    if (now === (song?.length ?? 1) - 1) {
+      setNow(0)
+    } else {
+      setNow(now + 1)
+    }
+  }
 
   let musicColors = useMemo(() => {
     return [
-      song?.[now].attributes.artwork.bgColor ?? '#eee',
-      song?.[now].attributes.artwork.textColor1 ?? '#eee',
-      song?.[now].attributes.artwork.textColor2 ?? '#eee',
-      song?.[now].attributes.artwork.textColor3 ?? '#eee',
-      song?.[now].attributes.artwork.textColor4 ?? '#eee',
+      currentSong?.attributes.artwork.bgColor ?? '#eee',
+      currentSong?.attributes.artwork.textColor1 ?? '#eee',
+      currentSong?.attributes.artwork.textColor2 ?? '#eee',
+      currentSong?.attributes.artwork.textColor3 ?? '#eee',
+      currentSong?.attributes.artwork.textColor4 ?? '#eee',
     ]
-  }, [now, song])
-
-  const r = parseInt(musicColors[0].substring(0, 2), 16) + 64
-  const g = parseInt(musicColors[0].substring(2, 4), 16) + 64
-  const b = parseInt(musicColors[0].substring(4, 6), 16) + 64
-  const rgb = `rgb(${r}, ${g}, ${b})`
+  }, [
+    currentSong?.attributes.artwork.bgColor,
+    currentSong?.attributes.artwork.textColor1,
+    currentSong?.attributes.artwork.textColor2,
+    currentSong?.attributes.artwork.textColor3,
+    currentSong?.attributes.artwork.textColor4,
+  ])
 
   useEffect(() => {
     setPlaceholder(
@@ -94,10 +107,10 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
                   Sunghyun was listening to&hellip;
                 </MotionP>
                 <MotionH2 className='my-0 font-sans text-white truncate text-md whitespace-nowrap' size={size} before='compact'>
-                  {song?.[now].attributes.name}
+                  {currentSong?.attributes.name ?? 'Nothing'}
                 </MotionH2>
                 <MotionP className='mb-0 font-sans text-sm text-gray-500 truncate' size={size} before='compact'>
-                  by {song?.[now].attributes.artistName}
+                  by {currentSong?.attributes.artistName ?? 'Nobody'}
                 </MotionP>
               </MotionDiv>
               <div className='flex flex-row justify-end'>
@@ -128,13 +141,29 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
           <MotionDiv className='grid grid-cols-5 my-5' size={size} before='compact'>
             <MotionDiv className='col-span-1 ' size={size} before='compact' />
             <MotionDiv className='col-span-1 my-auto' size={size} before='compact'>
-              <Back className='m-auto' />
+              <Back
+                className='m-auto'
+                onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+                  decrement()
+                  e.preventDefault()
+                  e.stopPropagation()
+                  return false
+                }}
+              />
             </MotionDiv>
             <MotionDiv className='col-span-1 my-auto ' size={size} before='compact'>
               <Pause className='m-auto transform scale-150' />
             </MotionDiv>
             <MotionDiv className='col-span-1 my-auto' size={size} before='compact'>
-              <Forward className='m-auto' />
+              <Forward
+                className='m-auto'
+                onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+                  increment()
+                  e.preventDefault()
+                  e.stopPropagation()
+                  return false
+                }}
+              />
             </MotionDiv>
             <MotionDiv className='col-span-1 my-auto' size={size} before='compact'>
               <AirPods className='m-auto' fill='black' />

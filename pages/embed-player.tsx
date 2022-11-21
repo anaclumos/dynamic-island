@@ -16,7 +16,7 @@ const Player = () => {
     if (inViewport) {
       setTimeout(() => {
         setMusicPlayerState('ultra')
-      }, 1000)
+      }, 2000)
     } else {
       setMusicPlayerState('compact')
     }

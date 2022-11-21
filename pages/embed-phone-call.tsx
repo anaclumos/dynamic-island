@@ -15,7 +15,7 @@ const PhoneCall = () => {
     if (inViewport) {
       setTimeout(() => {
         setPhoneCall('large')
-      }, 1000)
+      }, 2000)
     } else {
       setPhoneCall('default')
     }
