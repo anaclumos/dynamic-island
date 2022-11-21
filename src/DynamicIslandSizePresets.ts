@@ -4,22 +4,21 @@ export const DynamicIslandSizePresets = {
     aspectRatio: 44 / 150,
     borderRadius: 22,
   },
-  compactLeading: {
+  minimalLeading: {
     width: 52.33,
     aspectRatio: 44 / 52.33,
     borderRadius: 22,
   },
-  compactTrailing: {
+  minimalTrailing: {
     width: 52.33,
     aspectRatio: 44 / 52.33,
     borderRadius: 22,
   },
-  compactBothSides: {
+  compact: {
     width: 235,
     aspectRatio: 44 / 235,
     borderRadius: 22,
   },
-  // not sure about long width
   long: {
     width: 350,
     aspectRatio: 44 / 350,

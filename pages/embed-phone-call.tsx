@@ -3,28 +3,9 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import DynamicIsland from '../src/DynamicIsland'
 import { DynamicIslandPhoneCall } from '../src/PhoneCall'
 import Squircle from '../src/Squircle'
+import { useIntersection } from '../src/useIntersection'
 import { DynamicIslandSize } from '../types'
 
-const useIntersection = (element: React.MutableRefObject<HTMLElement | null>, rootMargin = '0px') => {
-  const [isVisible, setState] = useState(false)
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setState(entry.isIntersecting)
-      },
-      { rootMargin }
-    )
-    element.current && observer.observe(element.current)
-    let current = element.current
-    return () => {
-      if (current) {
-        observer.unobserve(current)
-      }
-    }
-  }, [element, rootMargin])
-
-  return isVisible
-}
 const PhoneCall = () => {
   const [phoneCall, setPhoneCall] = useState<DynamicIslandSize>('default')
   const ref = useRef(null)

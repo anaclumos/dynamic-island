@@ -76,11 +76,11 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
           </MotionDiv>
         </MotionDiv>
       </div>
-      <div style={size === 'compactBothSides' ? { display: 'none' } : { display: 'block' }} className='h-full'>
-        <MotionDiv className='h-full' size={size} before='compactBothSides'>
-          <MotionDiv size={size} before='compactBothSides' className='w-full'>
-            <MotionDiv className='grid grid-cols-5 my-6' size={size} before='compactBothSides'>
-              <MotionDiv className='relative w-16 h-16 col-span-1 my-auto ml-6 overflow-hidden rounded-2xl' size={size} before='compactBothSides'>
+      <div style={size === 'compact' ? { display: 'none' } : { display: 'block' }} className='h-full'>
+        <MotionDiv className='h-full' size={size} before='compact'>
+          <MotionDiv size={size} before='compact' className='w-full'>
+            <MotionDiv className='grid grid-cols-5 my-6' size={size} before='compact'>
+              <MotionDiv className='relative w-16 h-16 col-span-1 my-auto ml-6 overflow-hidden rounded-2xl' size={size} before='compact'>
                 <Image
                   src={`/api/imageProxy?imageUrl=${imageUrl}`}
                   alt={`album art of song`}
@@ -89,54 +89,54 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
                   placeholder='blur'
                 />
               </MotionDiv>
-              <MotionDiv className='col-span-3 my-auto ml-6 overflow-hidden text-left' size={size} before='compactBothSides'>
-                <MotionP className='mb-0 font-sans text-sm text-gray-500 truncate' size={size} before='compactBothSides'>
+              <MotionDiv className='col-span-3 my-auto ml-6 overflow-hidden text-left' size={size} before='compact'>
+                <MotionP className='mb-0 font-sans text-sm text-gray-500 truncate' size={size} before='compact'>
                   Sunghyun was listening to&hellip;
                 </MotionP>
-                <MotionH2 className='my-0 font-sans text-white truncate text-md whitespace-nowrap' size={size} before='compactBothSides'>
+                <MotionH2 className='my-0 font-sans text-white truncate text-md whitespace-nowrap' size={size} before='compact'>
                   {song?.[now].attributes.name}
                 </MotionH2>
-                <MotionP className='mb-0 font-sans text-sm text-gray-500 truncate' size={size} before='compactBothSides'>
+                <MotionP className='mb-0 font-sans text-sm text-gray-500 truncate' size={size} before='compact'>
                   by {song?.[now].attributes.artistName}
                 </MotionP>
               </MotionDiv>
               <div className='flex flex-row justify-end'>
                 <div className='relative my-auto mr-6 overflow-hidden scale-125'>
-                  <MusicEqualizer size={size} colors={musicColors} before='compactBothSides' />
+                  <MusicEqualizer size={size} colors={musicColors} before='compact' />
                 </div>
               </div>
             </MotionDiv>
           </MotionDiv>
-          <MotionDiv className='grid grid-cols-5 my-2' size={size} before='compactBothSides'>
-            <MotionDiv className='block text-left' size={size} before='compactBothSides'>
-              <MotionP className='m-auto font-sans text-sm text-center text-gray-500 align-middle' size={size} before='compactBothSides'>
+          <MotionDiv className='grid grid-cols-5 my-2' size={size} before='compact'>
+            <MotionDiv className='block text-left' size={size} before='compact'>
+              <MotionP className='m-auto font-sans text-sm text-center text-gray-500 align-middle' size={size} before='compact'>
                 0:00
               </MotionP>
             </MotionDiv>
-            <MotionDiv className='col-span-3 my-auto' size={size} before='compactBothSides'>
+            <MotionDiv className='col-span-3 my-auto' size={size} before='compact'>
               <div className='relative w-full h-2 my-auto mr-6 overflow-hidden bg-gray-500 rounded-full'>
                 <div className='absolute w-full h-2 my-auto mr-6 overflow-hidden bg-gray-500' />
                 <div className='absolute w-24 h-2 my-auto mr-6 overflow-hidden bg-white' />
               </div>
             </MotionDiv>
-            <MotionDiv className='block text-left align-middle' size={size} before='compactBothSides'>
-              <MotionP className='m-auto font-sans text-sm text-center text-gray-500 align-middle' size={size} before='compactBothSides'>
+            <MotionDiv className='block text-left align-middle' size={size} before='compact'>
+              <MotionP className='m-auto font-sans text-sm text-center text-gray-500 align-middle' size={size} before='compact'>
                 4:33
               </MotionP>
             </MotionDiv>
           </MotionDiv>
-          <MotionDiv className='grid grid-cols-5 my-5' size={size} before='compactBothSides'>
-            <MotionDiv className='col-span-1 ' size={size} before='compactBothSides' />
-            <MotionDiv className='col-span-1 my-auto' size={size} before='compactBothSides'>
+          <MotionDiv className='grid grid-cols-5 my-5' size={size} before='compact'>
+            <MotionDiv className='col-span-1 ' size={size} before='compact' />
+            <MotionDiv className='col-span-1 my-auto' size={size} before='compact'>
               <Back className='m-auto' />
             </MotionDiv>
-            <MotionDiv className='col-span-1 my-auto ' size={size} before='compactBothSides'>
+            <MotionDiv className='col-span-1 my-auto ' size={size} before='compact'>
               <Pause className='m-auto transform scale-150' />
             </MotionDiv>
-            <MotionDiv className='col-span-1 my-auto' size={size} before='compactBothSides'>
+            <MotionDiv className='col-span-1 my-auto' size={size} before='compact'>
               <Forward className='m-auto' />
             </MotionDiv>
-            <MotionDiv className='col-span-1 my-auto' size={size} before='compactBothSides'>
+            <MotionDiv className='col-span-1 my-auto' size={size} before='compact'>
               <AirPods className='m-auto' fill='black' />
             </MotionDiv>
           </MotionDiv>

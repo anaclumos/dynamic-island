@@ -9,7 +9,7 @@ import Squircle from '../src/Squircle'
 
 const Index = () => {
   const [callState, setCallState] = useState<DynamicIslandSize>('default')
-  const [musicPlayerState, setMusicPlayerState] = useState<DynamicIslandSize>('compactBothSides')
+  const [musicPlayerState, setMusicPlayerState] = useState<DynamicIslandSize>('compact')
 
   return (
     <>
@@ -40,17 +40,17 @@ const Index = () => {
       <div className='mt-12'>
         <DynamicIsland
           id='music-player'
-          default='compactBothSides'
+          default='compact'
           state={musicPlayerState}
           setState={setMusicPlayerState}
-          onClick={musicPlayerState === 'compactBothSides' ? () => setMusicPlayerState('ultra') : () => setMusicPlayerState('compactBothSides')}
+          onClick={musicPlayerState === 'compact' ? () => setMusicPlayerState('ultra') : () => setMusicPlayerState('compact')}
         >
           <DynamicIslandMusicPlayer size={musicPlayerState} />
         </DynamicIsland>
       </div>
-      <Squircle size='compactBothSides' />
-      <Squircle size='compactLeading' />
-      <Squircle size='compactTrailing' />
+      <Squircle size='compact' />
+      <Squircle size='minimalLeading' />
+      <Squircle size='minimalTrailing' />
       <Squircle size='default' />
       <Squircle size='large' />
       <Squircle size='long' />
