@@ -27,7 +27,7 @@ const Header = () => {
         </li>
         <li className='hover:underline'>
           <a href='https://cho.sh/w/9F7F85' target='_blank' rel='noopener noreferrer'>
-            Technical Review (WIP 🚧)
+            Technical Review
           </a>
         </li>
       </ul>
