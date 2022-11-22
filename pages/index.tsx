@@ -22,8 +22,11 @@ const Index = () => {
         <Header />
         <h1 className='px-4 py-1 my-6 text-3xl font-bold text-slate-900'>Dynamic Island on the 🕸</h1>
         <p className='px-4 py-1 text-base font-medium text-slate-900'>
-          Lorem non dolor quis exercitation cupidatat incididunt ex id sint consectetur magna esse. Anim officia anim ad. Fugiat velit consequat
-          tempor dolore veniam labore. Officia reprehenderit amet eu in consequat amet eu elit.
+          Apple created Dynamic Island as a new way of interacting with your phone via the punch hole. Now I recreated the same element with web
+          technologies! 🎉 Read the full article on my blog:{' '}
+          <a href='https://cho.sh/w/9F7F85' target='_blank' rel='noopener noreferrer' className='text-blue-500'>
+            cho.sh/w/9F7F85
+          </a>
         </p>
       </div>
       <div className='mt-12'>
