@@ -66,8 +66,6 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
     currentSong?.attributes?.artwork?.textColor4,
   ])
 
-  console.log(musicColors)
-
   return (
     <>
       <div style={size === 'ultra' ? { display: 'none' } : { display: 'block' }} className='h-full'>

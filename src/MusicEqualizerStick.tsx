@@ -20,7 +20,6 @@ type Props = {
 }
 
 const MusicEqualizerStick = ({ baseLength, colors }: Props) => {
-  console.log('colors[0]', colors[0])
   return (
     <motion.div
       className={`h-6 col-span-1 my-auto mx-auto rounded-full`}
