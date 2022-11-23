@@ -28,7 +28,8 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
     fetchSong().catch(console.error)
   }, [])
 
-  const imageUrl = currentSong?.attributes.artwork.url.replace('{w}', '500').replace('{h}', '500') ?? 'https://cataas.com/c'
+  console.log(currentSong)
+  const imageUrl = currentSong?.attributes?.artwork?.url?.replace('{w}', '500').replace('{h}', '500') ?? 'https://cataas.com/c'
 
   const decrement = () => {
     if (now === 0) {
@@ -48,18 +49,18 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
 
   let musicColors = useMemo(() => {
     return [
-      currentSong?.attributes.artwork.bgColor ?? '#eee',
-      currentSong?.attributes.artwork.textColor1 ?? '#eee',
-      currentSong?.attributes.artwork.textColor2 ?? '#eee',
-      currentSong?.attributes.artwork.textColor3 ?? '#eee',
-      currentSong?.attributes.artwork.textColor4 ?? '#eee',
+      currentSong?.attributes?.artwork?.bgColor ?? '#eee',
+      currentSong?.attributes?.artwork?.textColor1 ?? '#eee',
+      currentSong?.attributes?.artwork?.textColor2 ?? '#eee',
+      currentSong?.attributes?.artwork?.textColor3 ?? '#eee',
+      currentSong?.attributes?.artwork?.textColor4 ?? '#eee',
     ]
   }, [
-    currentSong?.attributes.artwork.bgColor,
-    currentSong?.attributes.artwork.textColor1,
-    currentSong?.attributes.artwork.textColor2,
-    currentSong?.attributes.artwork.textColor3,
-    currentSong?.attributes.artwork.textColor4,
+    currentSong?.attributes?.artwork?.bgColor,
+    currentSong?.attributes?.artwork?.textColor1,
+    currentSong?.attributes?.artwork?.textColor2,
+    currentSong?.attributes?.artwork?.textColor3,
+    currentSong?.attributes?.artwork?.textColor4,
   ])
 
   useEffect(() => {
