@@ -9,7 +9,8 @@ import { NowPlaying } from './Now'
 import { useEffect, useMemo, useState } from 'react'
 import { AppleMusicData, AppleMusicSong } from '../types/AppleMusicData'
 import { MusicEqualizer } from './MusicEqualizer'
-import placeholder from '../public/empty.png'
+import emptyAlbumCover from '../public/empty.png'
+import { getEmptyAlbumCover } from './emptyAlbumCover'
 
 export const hasNoImageUrl = (songUrl: string | StaticImageData) => {
   return !(typeof songUrl === 'string')
@@ -30,7 +31,8 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
     fetchSong().catch(console.error)
   }, [])
 
-  const imageUrl = currentSong?.attributes?.artwork?.url?.replace('{w}', '500').replace('{h}', '500') ?? placeholder
+  const imageUrl = currentSong?.attributes?.artwork?.url?.replace('{w}', '500').replace('{h}', '500') ?? emptyAlbumCover
+  const blurUrl = getEmptyAlbumCover()
 
   const decrement = () => {
     if (now === 0) {
@@ -72,7 +74,7 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
             {hasNoImageUrl(imageUrl) ? (
               <Image src={imageUrl} alt='Album Art' layout='fill' objectFit='cover' />
             ) : (
-              <Image src={`/api/imageProxy?imageUrl=${imageUrl}`} alt={`album art of song`} layout='fill' />
+              <Image src={`/api/imageProxy?imageUrl=${imageUrl}`} alt={`album art of song`} layout='fill' placeholder='blur' blurDataURL={blurUrl} />
             )}
           </MotionDiv>
           <MotionDiv className='col-span-4 mx-auto my-auto' size={size} before='ultra' />
@@ -89,7 +91,13 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
                 {hasNoImageUrl(imageUrl) ? (
                   <Image src={imageUrl} alt='Album Art' layout='fill' objectFit='cover' />
                 ) : (
-                  <Image src={`/api/imageProxy?imageUrl=${imageUrl}`} alt={`album art of song`} layout='fill' />
+                  <Image
+                    src={`/api/imageProxy?imageUrl=${imageUrl}`}
+                    alt={`album art of song`}
+                    layout='fill'
+                    placeholder='blur'
+                    blurDataURL={blurUrl}
+                  />
                 )}
               </MotionDiv>
               <MotionDiv className='col-span-3 my-auto ml-6 overflow-hidden text-left' size={size} before='compact'>
