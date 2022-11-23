@@ -9,7 +9,7 @@ import { NowPlaying } from './Now'
 import { useEffect, useMemo, useState } from 'react'
 import { AppleMusicData, AppleMusicSong } from '../types/AppleMusicData'
 import { MusicEqualizer } from './MusicEqualizer'
-import placeholder from '../public/placeholder.png'
+import placeholder from '../public/empty.png'
 
 export const hasNoImageUrl = (songUrl: string | StaticImageData) => {
   return !(typeof songUrl === 'string')
