@@ -20,18 +20,11 @@ type Props = {
 }
 
 const MusicEqualizerStick = ({ baseLength, colors }: Props) => {
-  let first = `#${colors[0]}`
-  const r = parseInt(colors[0].substring(0, 2), 16) + 64
-  const g = parseInt(colors[0].substring(2, 4), 16) + 64
-  const b = parseInt(colors[0].substring(4, 6), 16) + 64
-  const rgb = `rgb(${r}, ${g}, ${b})`
-  first = rgb
-
   return (
     <motion.div
       className={`h-6 col-span-1 my-auto mx-auto rounded-full`}
       style={{
-        background: first,
+        background: `${colors[0]}`,
         width: '2px',
       }}
       animate={{

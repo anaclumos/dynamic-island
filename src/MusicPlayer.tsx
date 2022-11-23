@@ -1,5 +1,5 @@
 import { DynamicIslandSize } from '../types'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import { MotionDiv, MotionH2, MotionP } from './MotionHtml'
 import Back from '../public/backward.fill.svg'
 import Forward from '../public/forward.fill.svg'
@@ -9,12 +9,14 @@ import { NowPlaying } from './Now'
 import { useEffect, useMemo, useState } from 'react'
 import { AppleMusicData, AppleMusicSong } from '../types/AppleMusicData'
 import { MusicEqualizer } from './MusicEqualizer'
+import placeholder from '../public/placeholder.png'
+
+export const hasNoImageUrl = (songUrl: string | StaticImageData) => {
+  return !(typeof songUrl === 'string')
+}
 
 export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) => {
   const [song, setSong] = useState<AppleMusicSong[]>()
-  const [placeholder, setPlaceholder] = useState(
-    `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='${'#eee'}'/%3E%3C/svg%3E`
-  )
 
   const [now, setNow] = useState<number>(0)
   const currentSong = useMemo(() => song?.[now] ?? null, [song, now])
@@ -28,8 +30,7 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
     fetchSong().catch(console.error)
   }, [])
 
-  console.log(currentSong)
-  const imageUrl = currentSong?.attributes?.artwork?.url?.replace('{w}', '500').replace('{h}', '500') ?? 'https://cataas.com/c'
+  const imageUrl = currentSong?.attributes?.artwork?.url?.replace('{w}', '500').replace('{h}', '500') ?? placeholder
 
   const decrement = () => {
     if (now === 0) {
@@ -49,11 +50,11 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
 
   let musicColors = useMemo(() => {
     return [
-      currentSong?.attributes?.artwork?.bgColor ?? '#eee',
-      currentSong?.attributes?.artwork?.textColor1 ?? '#eee',
-      currentSong?.attributes?.artwork?.textColor2 ?? '#eee',
-      currentSong?.attributes?.artwork?.textColor3 ?? '#eee',
-      currentSong?.attributes?.artwork?.textColor4 ?? '#eee',
+      currentSong?.attributes?.artwork?.bgColor ?? '#eeeeee',
+      currentSong?.attributes?.artwork?.textColor1 ?? '#eeeeee',
+      currentSong?.attributes?.artwork?.textColor2 ?? '#eeeeee',
+      currentSong?.attributes?.artwork?.textColor3 ?? '#eeeeee',
+      currentSong?.attributes?.artwork?.textColor4 ?? '#eeeeee',
     ]
   }, [
     currentSong?.attributes?.artwork?.bgColor,
@@ -63,26 +64,16 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
     currentSong?.attributes?.artwork?.textColor4,
   ])
 
-  useEffect(() => {
-    setPlaceholder(
-      `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='${
-        musicColors[0] ?? '#eee'
-      }'/%3E%3C/svg%3E`
-    )
-  }, [musicColors])
-
   return (
     <>
       <div style={size === 'ultra' ? { display: 'none' } : { display: 'block' }} className='h-full'>
         <MotionDiv className='grid justify-center h-full grid-cols-6 ml-1.5' size={size} before='ultra'>
           <MotionDiv className='relative col-span-1 mx-auto my-auto overflow-hidden rounded-lg w-7 h-7' size={size} before='ultra'>
-            <Image
-              src={`/api/imageProxy?imageUrl=${imageUrl}`}
-              alt={`album art of song`}
-              layout='fill'
-              blurDataURL={placeholder}
-              placeholder='blur'
-            />
+            {hasNoImageUrl(imageUrl) ? (
+              <Image src={imageUrl} alt='Album Art' layout='fill' objectFit='cover' />
+            ) : (
+              <Image src={`/api/imageProxy?imageUrl=${imageUrl}`} alt={`album art of song`} layout='fill' />
+            )}
           </MotionDiv>
           <MotionDiv className='col-span-4 mx-auto my-auto' size={size} before='ultra' />
           <MotionDiv className='w-7.5 col-span-1 mx-auto my-auto pr-0.5' size={size} before='ultra'>
@@ -95,13 +86,11 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
           <MotionDiv size={size} before='compact' className='w-full'>
             <MotionDiv className='grid grid-cols-5 my-6' size={size} before='compact'>
               <MotionDiv className='relative w-16 h-16 col-span-1 my-auto ml-6 overflow-hidden rounded-2xl' size={size} before='compact'>
-                <Image
-                  src={`/api/imageProxy?imageUrl=${imageUrl}`}
-                  alt={`album art of song`}
-                  layout='fill'
-                  blurDataURL={placeholder}
-                  placeholder='blur'
-                />
+                {hasNoImageUrl(imageUrl) ? (
+                  <Image src={imageUrl} alt='Album Art' layout='fill' objectFit='cover' />
+                ) : (
+                  <Image src={`/api/imageProxy?imageUrl=${imageUrl}`} alt={`album art of song`} layout='fill' />
+                )}
               </MotionDiv>
               <MotionDiv className='col-span-3 my-auto ml-6 overflow-hidden text-left' size={size} before='compact'>
                 <MotionP className='mb-0 font-sans text-sm text-gray-500 truncate' size={size} before='compact'>
