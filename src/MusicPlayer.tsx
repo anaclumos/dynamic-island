@@ -52,11 +52,11 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
 
   let musicColors = useMemo(() => {
     return [
-      currentSong?.attributes?.artwork?.bgColor ?? '#eeeeee',
-      currentSong?.attributes?.artwork?.textColor1 ?? '#eeeeee',
-      currentSong?.attributes?.artwork?.textColor2 ?? '#eeeeee',
-      currentSong?.attributes?.artwork?.textColor3 ?? '#eeeeee',
-      currentSong?.attributes?.artwork?.textColor4 ?? '#eeeeee',
+      currentSong?.attributes?.artwork?.bgColor ?? 'eeeeee',
+      currentSong?.attributes?.artwork?.textColor1 ?? 'eeeeee',
+      currentSong?.attributes?.artwork?.textColor2 ?? 'eeeeee',
+      currentSong?.attributes?.artwork?.textColor3 ?? 'eeeeee',
+      currentSong?.attributes?.artwork?.textColor4 ?? 'eeeeee',
     ]
   }, [
     currentSong?.attributes?.artwork?.bgColor,
@@ -65,6 +65,8 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
     currentSong?.attributes?.artwork?.textColor3,
     currentSong?.attributes?.artwork?.textColor4,
   ])
+
+  console.log(musicColors)
 
   return (
     <>
