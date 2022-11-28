@@ -6,7 +6,7 @@ const getRandomInt = (max: number) => {
 }
 
 const getLoopingRandomInt = (max: number, length: number, base: number) => {
-  const randomInts = []
+  const randomInts: number[] = []
   for (let i = 0; i < length - 1; i++) {
     randomInts.push((getRandomInt(max) - max) / 2 + (base / 100) * max)
   }
