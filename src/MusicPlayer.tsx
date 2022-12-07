@@ -72,7 +72,12 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
     <>
       <Head>
         {allImageUrl?.map((imageUrl) => {
-          return <link key={imageUrl} rel='preload' href={`/api/imageProxy?imageUrl=${encodeURIComponent(imageUrl)}`} as='image' />
+          return (
+            <>
+              <link key={imageUrl} rel='preload' href={`/api/imageProxy?imageUrl=${encodeURIComponent(imageUrl)}`} as='image' />
+              <link key={imageUrl} rel='preload' href={encodeURIComponent(imageUrl)} as='image' />
+            </>
+          )
         })}
       </Head>
       <div style={size === 'ultra' ? { display: 'none' } : { display: 'block' }} className='h-full'>
