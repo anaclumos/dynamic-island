@@ -11,6 +11,7 @@ import { AppleMusicData, AppleMusicSong } from '../types/AppleMusicData'
 import { MusicEqualizer } from './MusicEqualizer'
 import emptyAlbumCover from '../public/empty.png'
 import { getEmptyAlbumCover } from './emptyAlbumCover'
+import Head from 'next/head'
 
 export const hasNoImageUrl = (songUrl: string | StaticImageData) => {
   return !(typeof songUrl === 'string')
@@ -32,6 +33,7 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
   }, [])
 
   const imageUrl = currentSong?.attributes?.artwork?.url?.replace('{w}', '500').replace('{h}', '500') ?? emptyAlbumCover
+  const allImageUrl = song?.map((song) => song.attributes?.artwork?.url?.replace('{w}', '500').replace('{h}', '500') ?? emptyAlbumCover)
   const blurUrl = getEmptyAlbumCover()
 
   const decrement = () => {
@@ -68,6 +70,11 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
 
   return (
     <>
+      <Head>
+        {allImageUrl?.map((imageUrl) => {
+          return <link key={imageUrl} rel='preload' href={`/api/imageProxy?imageUrl=${encodeURIComponent(imageUrl)}`} as='image' />
+        })}
+      </Head>
       <div style={size === 'ultra' ? { display: 'none' } : { display: 'block' }} className='h-full'>
         <MotionDiv className='grid justify-center h-full grid-cols-6 ml-1.5' size={size} before='ultra'>
           <MotionDiv className='relative col-span-1 mx-auto my-auto overflow-hidden rounded-lg w-7 h-7' size={size} before='ultra'>
