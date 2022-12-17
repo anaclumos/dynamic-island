@@ -23,7 +23,7 @@ const Player = () => {
   }, [inViewport])
 
   return (
-    <div className='py-2'>
+    <div className='py-2 pb-4'>
       <Script src='/static/iframe-resizer.js' />
       <DynamicIsland
         id='music-player'
