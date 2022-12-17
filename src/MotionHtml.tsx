@@ -12,7 +12,7 @@ type Props = {
 }
 
 const stiffness = 400
-const damping = 30
+const damping = 40
 
 const MotionDiv = (props: Props) => {
   const willChange = useWillChange()
