@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import React from 'react'
 import { DynamicIslandSize } from '../types'
 import { useWillChange } from 'framer-motion'
+import { damping, stiffness } from './physics'
 
 type Props = {
   id?: string
@@ -10,9 +11,6 @@ type Props = {
   size: DynamicIslandSize
   children?: React.ReactNode
 }
-
-const stiffness = 400
-const damping = 30
 
 const MotionDiv = (props: Props) => {
   const willChange = useWillChange()

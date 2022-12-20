@@ -3,6 +3,7 @@ import { DynamicIslandSize } from '../types'
 import { DynamicIslandSizePresets } from './DynamicIslandSizePresets'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useWillChange } from 'framer-motion'
+import { damping, stiffness } from './physics'
 
 const initialState: keyof typeof DynamicIslandSizePresets = 'default'
 
@@ -33,7 +34,7 @@ const DynamicIsland = (props: Props) => {
           width: min(DynamicIslandSizePresets[state ?? initialState].width, maxWidth),
           height: DynamicIslandSizePresets[state ?? initialState].aspectRatio * min(DynamicIslandSizePresets[state ?? initialState].width, maxWidth),
           borderRadius: DynamicIslandSizePresets[state ?? initialState].borderRadius,
-          transition: { type: 'spring', stiffness: 400, damping: 25 },
+          transition: { type: 'spring', stiffness: stiffness, damping: damping },
           clipPath: `none`,
           transitionEnd: {
             clipPath: `url(#squircle-${state ?? initialState})`,

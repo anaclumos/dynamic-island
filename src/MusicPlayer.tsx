@@ -75,7 +75,7 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
           return (
             <>
               <link key={imageUrl} rel='preload' href={`/api/imageProxy?imageUrl=${encodeURIComponent(imageUrl)}`} as='image' />
-              <link key={imageUrl} rel='preload' href={encodeURIComponent(imageUrl)} as='image' />
+              <link key={`${imageUrl}-2`} rel='preload' href={imageUrl} as='image' />
             </>
           )
         })}
@@ -99,7 +99,11 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
         <MotionDiv className='h-full' size={size} before='compact'>
           <MotionDiv size={size} before='compact' className='w-full'>
             <MotionDiv className='grid grid-cols-5 my-6' size={size} before='compact'>
-              <MotionDiv className='relative w-16 h-16 col-span-1 my-auto ml-6 overflow-hidden rounded-2xl' size={size} before='compact'>
+              <MotionDiv
+                className='relative w-16 h-16 col-span-1 my-auto ml-6 overflow-hidden shadow-lg rounded-2xl shadow-gray-900'
+                size={size}
+                before='compact'
+              >
                 {hasNoImageUrl(imageUrl) ? (
                   <Image src={imageUrl} alt='Album Art' layout='fill' objectFit='cover' />
                 ) : (
