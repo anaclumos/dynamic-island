@@ -48,7 +48,7 @@ const Index = () => {
           setState={setMusicPlayerState}
           onClick={musicPlayerState === 'compact' ? () => setMusicPlayerState('ultra') : () => setMusicPlayerState('compact')}
         >
-          <DynamicIslandMusicPlayer size={musicPlayerState} />
+          <DynamicIslandMusicPlayer size={musicPlayerState} prefetch />
         </DynamicIsland>
       </div>
       <Squircle size='compact' />
