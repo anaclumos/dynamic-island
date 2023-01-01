@@ -17,7 +17,7 @@ export const hasNoImageUrl = (songUrl: string | StaticImageData) => {
   return !(typeof songUrl === 'string')
 }
 
-export const DynamicIslandMusicPlayer = ({ size, prefetch = false }: { size: DynamicIslandSize; prefetch?: boolean }) => {
+export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) => {
   const [song, setSong] = useState<AppleMusicSong[]>()
   const [now, setNow] = useState<number>(0)
   const currentSong = useMemo(() => song?.[now] ?? null, [song, now])
@@ -69,18 +69,6 @@ export const DynamicIslandMusicPlayer = ({ size, prefetch = false }: { size: Dyn
 
   return (
     <>
-      {prefetch && (
-        <Head>
-          {allImageUrl?.map((imageUrl) => {
-            return (
-              <>
-                <link key={imageUrl} rel='preload' href={`/api/imageProxy?imageUrl=${encodeURIComponent(imageUrl)}`} as='image' />
-                <link key={`${imageUrl}-2`} rel='preload' href={imageUrl} as='image' />
-              </>
-            )
-          })}
-        </Head>
-      )}
       <div style={size === 'ultra' ? { display: 'none' } : { display: 'block' }} className='h-full'>
         <MotionDiv className='grid justify-center h-full grid-cols-6 ml-1.5' size={size} before='ultra'>
           <MotionDiv className='relative col-span-1 mx-auto my-auto overflow-hidden rounded-lg w-7 h-7' size={size} before='ultra'>
