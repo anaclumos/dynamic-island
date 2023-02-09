@@ -1,6 +1,5 @@
 import React from 'react'
 import { MotionDiv } from './MotionHtml'
-import { motion } from 'framer-motion'
 import { DynamicIslandSize } from '../types'
 import MusicEqualizerStick from './MusicEqualizerStick'
 
