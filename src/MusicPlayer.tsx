@@ -20,7 +20,16 @@ export const hasNoImageUrl = (songUrl: string | StaticImageData) => {
 export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) => {
   const [song, setSong] = useState<AppleMusicSong[]>()
   const [now, setNow] = useState<number>(0)
+  const blurUrl = getEmptyAlbumCover()
   const currentSong = useMemo(() => song?.[now] ?? null, [song, now])
+  let imageUrl = currentSong?.attributes?.artwork?.url?.replace('{w}', '500').replace('{h}', '500') ?? ''
+  const [imgSrc, setImgSrc] = useState(imageUrl.length > 0 ? `/api/imageProxy?imageUrl=${imageUrl}` : blurUrl)
+
+  useEffect(() => {
+    imageUrl = currentSong?.attributes?.artwork?.url?.replace('{w}', '500').replace('{h}', '500') ?? ''
+    // store-030.blobstore.apple.com includes user data, so we can't proxy it
+    setImgSrc(imageUrl.length > 0 && !imageUrl.includes('apple.com') ? `/api/imageProxy?imageUrl=${imageUrl}` : blurUrl)
+  }, [now])
 
   useEffect(() => {
     const fetchSong = async () => {
@@ -31,9 +40,6 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
     fetchSong().catch(console.error)
   }, [])
 
-  const imageUrl = currentSong?.attributes?.artwork?.url?.replace('{w}', '500').replace('{h}', '500') ?? emptyAlbumCover
-  const allImageUrl = song?.map((song) => song.attributes?.artwork?.url?.replace('{w}', '500').replace('{h}', '500') ?? emptyAlbumCover)
-  const blurUrl = getEmptyAlbumCover()
 
   const decrement = () => {
     if (now === 0) {
@@ -75,7 +81,11 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
             {hasNoImageUrl(imageUrl) ? (
               <Image src={imageUrl} alt='Album Art' layout='fill' objectFit='cover' />
             ) : (
-              <Image src={`/api/imageProxy?imageUrl=${imageUrl}`} alt={`album art of song`} layout='fill' placeholder='blur' blurDataURL={blurUrl} />
+              <Image src={imgSrc} alt={`album art of song`} layout='fill' placeholder='blur' blurDataURL={blurUrl} onLoadingComplete={(result) => {
+                if (result.naturalWidth === 0) {
+                  setImgSrc(blurUrl);
+                }
+              }} />
             )}
           </MotionDiv>
           <MotionDiv className='col-span-4 mx-auto my-auto' size={size} before='ultra' />
@@ -94,14 +104,25 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
                 before='compact'
               >
                 {hasNoImageUrl(imageUrl) ? (
-                  <Image src={imageUrl} alt='Album Art' layout='fill' objectFit='cover' />
+                  <Image src={imageUrl} alt='Album Art' layout='fill' objectFit='cover'
+                    onLoadingComplete={(result) => {
+                      if (result.naturalWidth === 0) {
+                        setImgSrc(blurUrl);
+                      }
+                    }}
+                  />
                 ) : (
                   <Image
-                    src={`/api/imageProxy?imageUrl=${imageUrl}`}
+                    src={imgSrc}
                     alt={`album art of song`}
                     layout='fill'
                     placeholder='blur'
                     blurDataURL={blurUrl}
+                    onLoadingComplete={(result) => {
+                      if (result.naturalWidth === 0) {
+                        setImgSrc(blurUrl);
+                      }
+                    }}
                   />
                 )}
               </MotionDiv>
