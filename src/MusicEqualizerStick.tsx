@@ -20,11 +20,18 @@ type Props = {
 }
 
 const MusicEqualizerStick = ({ baseLength, colors }: Props) => {
+
+  const primaryColor = colors[0]
+
+  const red = Math.max(parseInt(primaryColor.slice(0, 2), 16) ?? 0, 60)
+  const green = Math.max(parseInt(primaryColor.slice(2, 4), 16) ?? 0, 60)
+  const blue = Math.max(parseInt(primaryColor.slice(4, 6), 16) ?? 0, 60)
+
   return (
     <motion.div
       className={`h-6 col-span-1 my-auto mx-auto rounded-full`}
       style={{
-        background: `#${colors[0]}`,
+        background: `rgba(${red}, ${green}, ${blue}, 1)`,
         width: '2px',
       }}
       animate={{
