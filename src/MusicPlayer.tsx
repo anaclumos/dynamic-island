@@ -29,7 +29,7 @@ export const DynamicIslandMusicPlayer = ({ size }: { size: DynamicIslandSize }) 
     imageUrl = currentSong?.attributes?.artwork?.url?.replace('{w}', '500').replace('{h}', '500') ?? ''
     // store-030.blobstore.apple.com includes user data, so we can't proxy it
     setImgSrc(imageUrl.length > 0 && !imageUrl.includes('apple.com') ? `/api/imageProxy?imageUrl=${imageUrl}` : blurUrl)
-  }, [now])
+  }, [now, song])
 
   useEffect(() => {
     const fetchSong = async () => {
